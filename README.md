@@ -1,8 +1,5 @@
-# ParticleChromo
-Using Particle Swarm Algorithm for chromosome three-dimensional structure construction
-
 ------------------------------------------------------------------------------------------------------------------------------------
-# Title here  - 3DMax
+# Title here  - ParticleChromo
 ------------------------------------------------------------------------------------------------------------------------------------
 **Bioinformatics and Machine Learning (BioMLearn) Laboratory,**
 
