@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------------
-# Title here  - ParticleChromo
+# Particle Swarm Optimization for Chromosome and genome 3D Structure Prediction from Hi-C Data - ParticleChromo
 ------------------------------------------------------------------------------------------------------------------------------------
 **Bioinformatics and Machine Learning (BioMLearn) Laboratory,**
 
