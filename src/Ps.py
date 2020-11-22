@@ -4,6 +4,7 @@ import Helper
 import sys
 import copy
 import time
+import argparse
 
 import numpy as np
 from scipy import stats
@@ -44,11 +45,12 @@ def One_Move(ittCount, swarm, contact, pointCount, threshold, j, outFilePtr):
 		if (i%1000 == 0) and (swarm.gBest is not None):
 			timeSinceUpdate = time.time()-start
 			totTime += timeSinceUpdate
-			print(timeSinceUpdate)
+
 			start = time.time()
-			print(i, j)
 			error = np.sqrt( (1/pointCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
+
 			Print_Stats(swarm, contact, pointCount, j, i, outFilePtr)
+
 			if (np.abs(saveGBestCost-error)) >= threshold:
 				saveGBestCost = error
 			else:
@@ -65,10 +67,9 @@ def operation(i, swarm):
 	swarm.Update_Pos(i)
 	swarm.Cost()
 
-def Optimize(maxRange, inFilePtr, outFilePtr):
-	contact, points, zeroInd = Helper.Read_Data(inFilePtr,maxRange, 3.1)
+def Optimize(maxRange, inFilePtr, outFilePtr, convFact = 3.1):
+	contact, points, zeroInd = Helper.Read_Data(inFilePtr,maxRange, convFact)
 	swarm = Swarm(contact, len(points), randVal=randRange, swarmCount=swarmCount, zeroInd=zeroInd)
-	Helper.Write_List(swarm.pos[0], './output/testPosStart' + str(maxRange) + '.txt')
 
 	ittFin, totTime = One_Move(ittCount, swarm, contact, len(points), threshold, maxRange, outFilePtr)
 	return (stats.pearsonr(swarm.gBest[2], contact[:,3])[0], 
@@ -78,15 +79,15 @@ def Optimize(maxRange, inFilePtr, outFilePtr):
 					totTime, 
 					maxRange, swarm.id)
 
-def Par_Choice(lineSpace, inFilePtr, outFilePtr, k):
+def Par_Choice(rangeSpace, inFilePtr, outFilePtr):
 
 	bestSwarm = None
-	if lineSpace is None:
+	if rangeSpace is None:
 		bestSwarm = Optimize(None, inFilePtr, outFilePtr)
-	elif len(lineSpace) > 1:
+	elif len(rangeSpace) > 1:
 		convStore = []
 		pool = Pool(processes=(PROC_COUNT))
-		swarms = pool.starmap(Optimize, zip(range(lineSpace[0],lineSpace[1],5000), repeat(inFilePtr), repeat(outFilePtr)))
+		swarms = pool.starmap(Optimize, zip(range(rangeSpace[0],rangeSpace[1],5000), repeat(inFilePtr), repeat(outFilePtr)))
 
 		pool.close()
 		pool.join()
@@ -99,98 +100,75 @@ def Par_Choice(lineSpace, inFilePtr, outFilePtr, k):
 			if (bestSwarm is None) or (swarm[1] > bestSwarm[1]):
 				bestSwarm = swarm
 	else:
-		bestSwarm = Optimize(lineSpace[0], inFilePtr, outFilePtr)
+		bestSwarm = Optimize(rangeSpace[0], inFilePtr, outFilePtr)
 
 	print(bestSwarm)
 
-	#Helper.Write_List(convStore, outFilePtr + (str)(k) + '_converg.txt')
 	return bestSwarm
 
-def Full_List(countMin, countMax):
-	#lineSpace = [-0.4,-0.3,-0.2,-0.1,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1,1.1,1.2,1.3,1.4,1.5,1.6,2,2.1,2.2,2.3,2.4,2.5,2.6,3,3.1,3.2,3.3,3.4,3.5,3.6]
-	#lineSpace = [0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4]
-	#lineSpace = [0.2,0.3,0.4,0.5,0.6,0.7]
-	#lineSpace = [3.1]
-	#lineSpace = None
-	lineSpace = [5000, 40000]
-	#lineSpace = [5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,4,4.1,4.2,4.3,4.4,4.5,4.6]
-
-	tmp = [ 'chainDres5_Matrix_noise000.txt',
-			'chainDres5_Matrix_noise030.txt',
-			'chainDres5_Matrix_noise050.txt',
-			'chainDres5_Matrix_noise070.txt',
-			'chainDres5_Matrix_noise100.txt',
-			'chainDres5_Matrix_noise130.txt',
-			'chainDres5_Matrix_noise150.txt',
-			'chainDres5_Matrix_noise170.txt',
-			'chainDres5_Matrix_noise200.txt',
-			'chainDres5_Matrix_noise250.txt',
-			'chainDres5_Matrix_noise300.txt',
-			'chainDres5_Matrix_noise400.txt',]
-
-	inFilePtr = './data/input-and-models/Input/HiC/'
-	#inFilePtr = './data/input-and-models/Input/Synthetic/'
-	#inFilePtr = './utility/GSM1173492_Th1_ensemble/50kb/iced/'
-
-	outFilePtr = './output/Matrix/'
-	#outFilePtr = './output/GSM1173492_Th1_ensemble/'
-	
-
+def Full_List(rangeSpace, inputFilePtr, outFilePtr):
 	convStore = []
-	for k in range(countMin, countMax):
-		#for j in range(2,len(tmp)):
-		print('chr ' + (str)(k))
-		tempInPtr = inFilePtr + 'chr' + (str)(k) + '_500kb_matrix.txt'
-		tempOutPtr = outFilePtr + 'chr' + (str)(k) + '_500kb_matrix'
-		#tempInPtr = inFilePtr + tmp[j]
-		#tempOutPtr = outFilePtr + tmp[j]
-		#tempInPtr = inFilePtr + 'Iced_chr' + (str)(k) + '__50kb.txt'
-		#tempOutPtr = outFilePtr + 'chr' + (str)(k) + '_50kb_matrix'
-		#tempInPtr = inFilePtr + 'Iced_chrX__1mb.txt'
-		#tempOutPtr = outFilePtr + 'chrX_1mb_matrix'
-		print(tempInPtr)
-		convStore.append(Par_Choice(lineSpace, tempInPtr, tempOutPtr, k))
-		print(convStore)
 
-	Helper.Write_List(convStore, outFilePtr + 'par_50kb_converg.txt')
+	print(tempInPtr)
+	convStore.append(Par_Choice(rangeSpace, inputFilePtr, outFilePtr))
+	print(convStore)
+
+	Helper.Write_List(convStore, outFilePtr)
 
 
 sys.setrecursionlimit(10000)
 PROC_COUNT = cpu_count()
 
-'''#mkl.set_num_threads(56)
-mkl.MKL_DYNAMIC=False
-mkl.set_num_threads(16)
-print(mkl.get_max_threads())'''
+inFilePtr = '../input-and-models/Input/HiC/'
+outFilePtr = './chr.pdb"'
 
-swarmCount = 20
-ittCount = 20000
-threshold = 0.1
-randRange = 1
+tempInPtr = inFilePtr + 'chr' + str(12) + '_1mb_matrix.txt'
+tempOutPtr = outFilePtr + 'chr' + str(12) + '_1mb_matrix_converg.txt'
 
-Full_List(1,2)
+swarmCount = 20 # Number of swarms in system
+ittCount = 20000 # Maximum itterations before stop
+threshold = 0.1 # Error threshold before stoping
+randRange = 1.0 # Range of x,y,z starting coords. Random value bewtween -randRange,randRange 
 
-'''
-# 	 Convergence number Selection Times
-#	 Multithreading
-#	 Grouping0.3
-#		
+rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific dataset. Use two values [one, two] to multithread through a range of those two values at a interval of 5000
 
-	5 heuristic methods
-	simulated
-	lcl method
-	chromosome3d method
-	name
-	chimera visualaization
-	
-	close gap
-	Same scale pdb	- 	DONE
-	Standardized distance
-	finding optimal convergence factor and random values
-	implement matrix/tupple switch
 
-	time compare
-	RMSE scale
-	PSO distance value range
+# python3 ParticleChromo3D.py <input_data> <other_parameter>
 
-''' 
+parser = argparse.ArgumentParser("ParticleChromo3D")
+parser.add_argument("infile", help="Matrix of contacts", type=str)
+parser.add_argument("-o","--outfile", help="File to output pdb model [Default ./]", type=str, default="./chr.pdb")
+parser.add_argument("-rmin","--rangeMin", help="Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default 20000]", type=int, default=20000)
+parser.add_argument("-rmax","--rangeMax", help="Minimum range for scaling factor. (If a min and max range are specified, program is multithreaded through intervals of 5000)", type=int)
+
+parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Default 20]", type=int, default=20)
+parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 20000]", type=int, default=20000)
+parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.1]", type=float, default=0.1)
+parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
+
+args = parser.parse_args()
+
+if args.infile:
+	inFilePtr = args.infile
+if args.outfile:
+	outFilePtr = args.outfile
+if args.rangeMin:
+	rangeSpace.append(args.rangeMin)
+if args.rangeMax:
+	rangeSpace.append(args.rangeMax)
+if args.swarmCount:
+	swarmCount = args.swarmCount
+if args.ittCount:
+	ittCount = args.ittCount
+if args.threshold:
+	threshold = args.threshold
+if args.randRange:
+	randRange = args.randRange
+
+if len(rangeSpace) == 0:
+	rangeSpace.append(20000)
+
+if len(rangeSpace) > 2 and (rangeSpace[0] == rangeSpace[1]):
+	rangeSpace.pop()
+
+Full_List(rangeSpace, inFilePtr,outFilePtr)

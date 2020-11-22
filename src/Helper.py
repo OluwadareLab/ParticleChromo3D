@@ -11,11 +11,9 @@ import copy
 def Read_Matrix_To_List(filePtr):
 	contact = np.genfromtxt(filePtr, delimiter=' ')
 
-	print(contact.shape)
 	contact = contact[~np.all(contact == 0, axis=0)]
 	idx = np.argwhere(np.all(contact[..., :] == 0, axis=0))
 	contact = np.delete(contact, idx, axis=1)
-	print(contact.shape)
 
 	count = 0
 
@@ -58,19 +56,7 @@ def Read_Data(filePtr, maxScale, convFactor=None):
 		constraint[i][0] = pointMap[constraint[i][0]]
 		constraint[i][1] = pointMap[constraint[i][1]]
 
-	#constraint[:,2] = constraint[:,2]*50
 	mean = np.mean(constraint[:,2])
-	print(mean)
-	#maxScale = (20000000*(mean**-0.783))
-
-	#maxScale = int((156.05*len(pointMap)) + 3973.3)
-	#maxScale = int((117.39*len(pointMap)) + 5323.5)
-	#maxScale = int((112.26*len(pointMap)) + 5954.9)
-
-	#print(maxScale)
-	#maxScale = int(np.ceil(maxScale / 5000) * 5000)
-	#maxScale = int(np.floor(maxScale / 5000) * 5000)
-	#maxScale = int(np.round(maxScale / 5000) * 5000)
 
 	dist = np.zeros(constraint.shape[0])
 	if maxScale is not None:
@@ -96,25 +82,8 @@ def Read_Data(filePtr, maxScale, convFactor=None):
 				saveRange = i
 				print(saveRange)
 
-	'''	if len(pointMap) > 600:
-			constraint[:,2] = Scale_Arr(constraint[:,2],1000,100000)
-		elif len(pointMap) > 260:
-			constraint[:,2] = Scale_Arr(constraint[:,2],1000,50000)
-		elif len(pointMap) > 200:
-			constraint[:,2] = Scale_Arr(constraint[:,2],1000,40000)
-		elif len(pointMap) > 150:
-			constraint[:,2] = Scale_Arr(constraint[:,2],1000,30000)
-		elif len(pointMap) > 50:
-			constraint[:,2] = Scale_Arr(constraint[:,2],1000,20000)
-		else:
-			constraint[:,2] = Scale_Arr(constraint[:,2],1000,10000)'''
-
 	constraint = np.insert(constraint,3,dist,axis=1)
-
-	print(constraint.shape)
-
-	#dist = 1 / (constraint[:,2]**convFactor)
-
+	
 	return constraint, pointMap, zeroInd
 
 def avgCalc(constraint, convFactor):
