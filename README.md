@@ -60,9 +60,9 @@ optional arguments: <br />
 	&nbsp;-h, --help  show this help message and exit<br /><br />
 	&nbsp;-o OUTFILE, --outfile OUTFILE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;File to output pdb model [Default ./] <br /><br />
-	&nbsp;-rmin RANGEMIN, --rangeMin RANGEMIN <br /><br />
+	&nbsp;-rmin RANGEMIN, --rangeMin RANGEMIN <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
-                        20000] <br />			
+                        20000] <br /><br />		
 	&nbsp;-rmax RANGEMAX, --rangeMax RANGEMAX <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (If a min and max range are specified, program is
                         multithreaded through intervals of 5000) <br />	<br />		
