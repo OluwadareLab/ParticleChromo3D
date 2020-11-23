@@ -53,27 +53,27 @@ usage: ParticleChromo3D [-h] [-o OUTFILE] [-rmin RANGEMIN] [-rmax RANGEMAX] [-sc
                         [-t THRESHOLD] [-rr RANDRANGE]
                         infile
 
-positional arguments:
-  infile                Matrix of contacts
+positional arguments: <br />
+  infile                Matrix of contacts <br />
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -o OUTFILE, --outfile OUTFILE
-                        File to output pdb model [Default ./]
-  -rmin RANGEMIN, --rangeMin RANGEMIN
+optional arguments: <br />
+  -h, --help            show this help message and exit <br />
+  -o OUTFILE, --outfile OUTFILE <br />
+                        File to output pdb model [Default ./] <br />
+  -rmin RANGEMIN, --rangeMin RANGEMIN <br />
                         Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
-                        20000]
-  -rmax RANGEMAX, --rangeMax RANGEMAX
+                        20000] <br />
+  -rmax RANGEMAX, --rangeMax RANGEMAX <br />
                         Minimum range for scaling factor. (If a min and max range are specified, program is
-                        multithreaded through intervals of 5000)
-  -sc SWARMCOUNT, --swarmCount SWARMCOUNT
-                        Number of swarms in system [Default 20]
-  -itt ITTCOUNT, --ittCount ITTCOUNT
-                        Maximum itterations before stop [Default 20000]
-  -t THRESHOLD, --threshold THRESHOLD
-                        Error threshold before stoping [Default 0.1]
-  -rr RANDRANGE, --randRange RANDRANGE
-                        Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]
+                        multithreaded through intervals of 5000) <br />
+  -sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
+                        Number of swarms in system [Default 20] <br />
+  -itt ITTCOUNT, --ittCount ITTCOUNT <br />
+                        Maximum itterations before stop [Default 20000] <br />
+  -t THRESHOLD, --threshold THRESHOLD <br />
+                        Error threshold before stoping [Default 0.1] <br />
+  -rr RANDRANGE, --randRange RANDRANGE <br />
+                        Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 
 **5.	Output:**
