@@ -58,20 +58,20 @@ positional arguments: <br />
 
 optional arguments: <br />	
 	&nbsp;-h, --help  show this help message and exit<br /><br />
-	&nbsp;-o OUTFILE, --outfile OUTFILE <br /><br />
-		&nbsp;&nbsp;&nbsp;&nbsp;File to output pdb model [Default ./] <br />
+	&nbsp;-o OUTFILE, --outfile OUTFILE <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;File to output pdb model [Default ./] <br /><br />
 	&nbsp;-rmin RANGEMIN, --rangeMin RANGEMIN <br /><br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
                         20000] <br />			
 	&nbsp;-rmax RANGEMAX, --rangeMax RANGEMAX <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (If a min and max range are specified, program is
-                        multithreaded through intervals of 5000) <br />			
+                        multithreaded through intervals of 5000) <br />	<br />		
 	&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 20] <br />		
+		&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 20] <br /><br />	
 	&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 20000] <br />		
+		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 20000] <br /><br />	
 	&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.1] <br />		
+		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.1] <br /><br />	
 	&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
