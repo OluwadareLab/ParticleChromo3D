@@ -54,10 +54,10 @@ usage: ParticleChromo3D [-h] [-o OUTFILE] [-rmin RANGEMIN] [-rmax RANGEMAX] [-sc
                         infile
 
 positional arguments: <br />
-&nbsp;infile  Input filed in the format of a matrix of contacts <br />
+	infile  Input filed in the format of a matrix of contacts <br />
 
 optional arguments: <br />
-	&nbsp;-h, --help  show this help message and exit <br />
+	&nbsp;-h, --help  show this help message and exit
 	
 	&nbsp;-o OUTFILE, --outfile OUTFILE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;File to output pdb model [Default ./] <br />
