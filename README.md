@@ -42,7 +42,7 @@ Square Matrix Input format: The square matrix is a comma seperated N by N intra-
 Install env with anaconda from spec-file: <br />
 conda create --name ParticleChromo3D --file ParticleChromo3d_env.txt
 
-Or install dependencies individually <br /> <br />
+Or install dependencies individually <br />
 
 Dependencies: <br />
 Biopython - 1.7.8 <br />
