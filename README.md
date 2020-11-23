@@ -57,10 +57,10 @@ positional arguments: <br />
 &nbsp;infile  Input filed in the format of a matrix of contacts <br />
 
 optional arguments: <br />	
-	&nbsp;-h, --help  show this help message and exit
+	&nbsp;-h, --help  show this help message and exit<br /><br />
 	&nbsp;-o OUTFILE, --outfile OUTFILE <br /><br />
 		&nbsp;&nbsp;&nbsp;&nbsp;File to output pdb model [Default ./] <br />
-	&nbsp;-rmin RANGEMIN, --rangeMin RANGEMIN <br />
+	&nbsp;-rmin RANGEMIN, --rangeMin RANGEMIN <br /><br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
                         20000] <br />			
 	&nbsp;-rmax RANGEMAX, --rangeMax RANGEMAX <br />
