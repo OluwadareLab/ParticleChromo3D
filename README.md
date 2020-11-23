@@ -50,7 +50,7 @@ scipy - 1.5.2 <br />
 numpy - 1.19.2 <br />
 
 usage: ParticleChromo3D [-h] [-o OUTFILE] [-rmin RANGEMIN] [-rmax RANGEMAX] [-sc SWARMCOUNT] [-itt ITTCOUNT]<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;[-t THRESHOLD] [-rr RANDRANGE]
+			&nbsp;&nbsp;&nbsp;&nbsp;[-t THRESHOLD] [-rr RANDRANGE]<br />
 			&nbsp;&nbsp;&nbsp;&nbsp;infile
 
 positional arguments: <br />
