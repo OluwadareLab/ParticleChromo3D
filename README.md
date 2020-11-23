@@ -49,6 +49,32 @@ Biopython - 1.7.8 <br />
 scipy - 1.5.2 <br />
 numpy - 1.19.2 <br />
 
+usage: ParticleChromo3D [-h] [-o OUTFILE] [-rmin RANGEMIN] [-rmax RANGEMAX] [-sc SWARMCOUNT] [-itt ITTCOUNT]
+                        [-t THRESHOLD] [-rr RANDRANGE]
+                        infile
+
+positional arguments:
+  infile                Matrix of contacts
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTFILE, --outfile OUTFILE
+                        File to output pdb model [Default ./]
+  -rmin RANGEMIN, --rangeMin RANGEMIN
+                        Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
+                        20000]
+  -rmax RANGEMAX, --rangeMax RANGEMAX
+                        Minimum range for scaling factor. (If a min and max range are specified, program is
+                        multithreaded through intervals of 5000)
+  -sc SWARMCOUNT, --swarmCount SWARMCOUNT
+                        Number of swarms in system [Default 20]
+  -itt ITTCOUNT, --ittCount ITTCOUNT
+                        Maximum itterations before stop [Default 20000]
+  -t THRESHOLD, --threshold THRESHOLD
+                        Error threshold before stoping [Default 0.1]
+  -rr RANDRANGE, --randRange RANDRANGE
+                        Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]
+
 
 **5.	Output:**
 -----------------------------------------------------------
