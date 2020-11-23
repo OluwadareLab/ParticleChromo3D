@@ -54,7 +54,8 @@ usage: ParticleChromo3D [-h] [-o OUTFILE] [-rmin RANGEMIN] [-rmax RANGEMAX] [-sc
                         infile
 
 positional arguments: <br />
-&nbsp;infile  Input filed in the format of a matrix of contacts <br />
+&nbsp;infile  <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;Input filed in the format of a matrix of contacts <br />
 
 optional arguments: <br />	
 	&nbsp;-h, --help  show this help message and exit<br /><br />
