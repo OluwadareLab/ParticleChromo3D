@@ -57,23 +57,23 @@ positional arguments: <br />
   infile                Matrix of contacts <br />
 
 optional arguments: <br />
-  -h, --help            show this help message and exit <br />
-  -o OUTFILE, --outfile OUTFILE <br />
-                        File to output pdb model [Default ./] <br />
-  -rmin RANGEMIN, --rangeMin RANGEMIN <br />
-                        Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
+&nbsp;-h, --help  show this help message and exit <br />
+&nbsp;-o OUTFILE, --outfile OUTFILE <br />
+&nbsp;&nbsp;&nbsp;&nbsp;File to output pdb model [Default ./] <br />
+&nbsp;-rmin RANGEMIN, --rangeMin RANGEMIN <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (Input only a min range to do no multithreading) [Default
                         20000] <br />
-  -rmax RANGEMAX, --rangeMax RANGEMAX <br />
-                        Minimum range for scaling factor. (If a min and max range are specified, program is
+&nbsp;-rmax RANGEMAX, --rangeMax RANGEMAX <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Minimum range for scaling factor. (If a min and max range are specified, program is
                         multithreaded through intervals of 5000) <br />
-  -sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
-                        Number of swarms in system [Default 20] <br />
-  -itt ITTCOUNT, --ittCount ITTCOUNT <br />
-                        Maximum itterations before stop [Default 20000] <br />
-  -t THRESHOLD, --threshold THRESHOLD <br />
-                        Error threshold before stoping [Default 0.1] <br />
-  -rr RANDRANGE, --randRange RANDRANGE <br />
-                        Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
+&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 20] <br />
+&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 20000] <br />
+&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.1] <br />
+&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 
 **5.	Output:**
