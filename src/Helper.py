@@ -8,6 +8,7 @@ from collections.abc import Iterable
 import numpy as np
 import copy
 
+# Reads in a matrix of contacts
 def Read_Matrix_To_List(filePtr):
 	contact = np.genfromtxt(filePtr, delimiter=' ')
 
@@ -37,11 +38,14 @@ def Read_Matrix_To_List(filePtr):
 
 	return np.array(contactList), zeroInd
 
+# Reads in a list format for contacts
 def Read_Data_List(filePtr):
 	return np.loadtxt(filePtr), None
 
+# Reads the data and puts it into a matrix of distances
 def Read_Data(filePtr, maxScale, convFactor=None):
 	constraint, zeroInd = Read_Matrix_To_List(filePtr)
+	#constraint, zeroInd = Read_Data_List(filePtr)
 
 	pointList = set()
 	for i in range(constraint.shape[0]):
@@ -58,6 +62,7 @@ def Read_Data(filePtr, maxScale, convFactor=None):
 
 	mean = np.mean(constraint[:,2])
 
+	# Performs scaling on the contact matrix and then converts to distance
 	dist = np.zeros(constraint.shape[0])
 	if maxScale is not None:
 		constraint[:,2] = Scale_Arr(constraint[:,2],1000,maxScale)
@@ -86,6 +91,7 @@ def Read_Data(filePtr, maxScale, convFactor=None):
 	
 	return constraint, pointMap, zeroInd
 
+# Calcualtes the average number of contacts
 def avgCalc(constraint, convFactor):
 	avgIf = constraint.mean(axis=0)[2]
 	avgDist = 0
@@ -99,16 +105,18 @@ def avgCalc(constraint, convFactor):
 
 	return constrAvg, avgDist
 
+# Writes xyz list to a PDB
 def Write_Output(filePtr, xyz):
 	xyz = Scale_Arr(xyz)
 	WritePDB(xyz, filePtr+'.pdb')
 
+# Scales a range of values
 def Scale_Arr(xyz, minVal=-10, maxVal=10):
 	oldRange = xyz.max() - xyz.min()
 	newRange = (maxVal - minVal)  
 	return (((xyz - xyz.min()) * newRange) / oldRange) + minVal
 
-
+# Writes a list to a file
 def Write_List(listToWrite, filePtr):
 	with open(filePtr, 'w') as f:
 		for item in listToWrite:
@@ -119,6 +127,7 @@ def Write_List(listToWrite, filePtr):
 			else:
 				f.write("%s\n" % item)
 
+# Performs procrustes on a pdb file
 def Proc_PDB(inputPtr, comparePtr):
 	xyzIn = Read_PDB(inputPtr)
 	xyzComp = Read_PDB(comparePtr)

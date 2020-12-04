@@ -13,6 +13,7 @@ from multiprocessing.dummy import Pool
 from multiprocessing import cpu_count
 from itertools import repeat
 
+# Prints statistics of the current swarm
 def Print_Stats(swarm, contact, pointCount, j, i, outFilePtr):
 	pers = stats.pearsonr(swarm.gBest[2], contact[:,3])
 	spear = stats.spearmanr(swarm.gBest[2], contact[:,3])
@@ -31,11 +32,9 @@ def Print_Stats(swarm, contact, pointCount, j, i, outFilePtr):
 	Write_Stats(swarm, contact, j, outFilePtr)
 
 def Write_Stats(swarm, contact, j, outFilePtr):
-	#Helper.Write_List(swarm.gBest[2], outFilePtr + 'testAct' + str(j) + '.txt')
-	#Helper.Write_List(contact[:,3], outFilePtr + 'testWish' + str(j) + '.txt')
-	#Helper.Write_List(swarm.gBest[0], outFilePtr + 'testPosEnd' + str(j) + '.txt')
 	Helper.Write_Output(outFilePtr+str(j), swarm.gBest[0])
 
+# Performs one operation and prints statistics of current swarm
 def One_Move(ittCount, swarm, contact, pointCount, threshold, j, outFilePtr):
 	saveGBestCost = float('inf')
 	totTime = 0
@@ -62,11 +61,13 @@ def One_Move(ittCount, swarm, contact, pointCount, threshold, j, outFilePtr):
 	totTime += timeSinceUpdate
 	return i, totTime
 
+# Performs a single PSO pass: Velocity calculation, update position, get new cost
 def operation(i, swarm):
 	swarm.Calc_Vel(ittCount,i)
 	swarm.Update_Pos(i)
 	swarm.Cost()
 
+# Optimizes single swarm
 def Optimize(maxRange, inFilePtr, outFilePtr, convFact = 3.1):
 	contact, points, zeroInd = Helper.Read_Data(inFilePtr,maxRange, convFact)
 	swarm = Swarm(contact, len(points), randVal=randRange, swarmCount=swarmCount, zeroInd=zeroInd)
@@ -79,6 +80,7 @@ def Optimize(maxRange, inFilePtr, outFilePtr, convFact = 3.1):
 					totTime, 
 					maxRange, swarm.id)
 
+# Runs in paralel if passed multiple rangeSpace
 def Par_Choice(rangeSpace, inFilePtr, outFilePtr):
 
 	bestSwarm = None
@@ -133,8 +135,8 @@ randRange = 1.0 # Range of x,y,z starting coords. Random value bewtween -randRan
 rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific dataset. Use two values [one, two] to multithread through a range of those two values at a interval of 5000
 
 
+# Arguments for running program
 # python3 ParticleChromo3D.py <input_data> <other_parameter>
-
 parser = argparse.ArgumentParser("ParticleChromo3D")
 parser.add_argument("infile", help="Matrix of contacts", type=str)
 parser.add_argument("-o","--outfile", help="File to output pdb model [Default ./]", type=str, default="./chr.pdb")
