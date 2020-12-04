@@ -34,7 +34,7 @@ The Hi-C datasets we used can be downloaded from here : http://sysbio.rnet.misso
 **3.	Input matrix file format:**
 -----------------------------------------------------------
 
-Square Matrix Input format: The square matrix is a comma seperated N by N intra-chromosomal contact matrix derived from Hi-C data, where N is the number of equal-sized regions of a chromosome.
+Square Matrix Input format: The square matrix is a space seperated N by N intra-chromosomal contact matrix derived from Hi-C data, where N is the number of equal-sized regions of a chromosome.
 
 **4.	Usage:**
 -----------------------------------------------------------
