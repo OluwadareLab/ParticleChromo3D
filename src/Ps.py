@@ -154,22 +154,16 @@ rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific da
 # python3 ParticleChromo3D.py <input_data> <other_parameter>
 parser = argparse.ArgumentParser("ParticleChromo3D")
 parser.add_argument("infile", help="Matrix of contacts", type=str)
-parser.add_argument("-o","--outfile", help="File to output pdb model [Default ./]", type=str, default="./chr.pdb")
-
-parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Default 20]", type=int, default=10)
-parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 20000]", type=int, default=30000)
+parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Default 10]", type=int, default=10)
+parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 30000]", type=int, default=30000)
 parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.1]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
-#parser.add_argument("-as","--aStep", help="Convert factor step [Default .2]", type=float, default=.2)
-#parser.add_argument("-az","--aZero", help="Convert factor step [Default .2]", type=float, default=.2)
-#parser.add_argument("-an", help="Convert factor step [Default .2]", type=float, default=.2)
+
 
 args = parser.parse_args()
 
 if args.infile:
     inFilePtr = args.infile
-if args.outfile:
-    outFilePtr = args.outfile
 if args.swarmCount:
     swarmCount = args.swarmCount
 if args.ittCount:
@@ -207,7 +201,7 @@ f.close()
 
 #for thisAlpha in alphas:
 #print("alpha is ", thisAlpha)
-theseAlphas = np.array([0.1, 1.5, 0.1])*100
+theseAlphas = np.array([0.1, 1.0, 0.05])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 #print(len(thisAlpha))
 #thisOutFilePtr = outFilePtr 
