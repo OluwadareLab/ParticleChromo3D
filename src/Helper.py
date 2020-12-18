@@ -89,7 +89,7 @@ def avgCalc(constraint, convFactor):
 # Writes xyz list to a PDB
 def Write_Output(filePtr, xyz):
     xyz = Scale_Arr(xyz)
-    WritePDB(xyz, filePtr)
+    WritePDB(xyz, filePtr+".pdb")
 
 # Scales a range of values
 def Scale_Arr(xyz, minVal=-10, maxVal=10):
