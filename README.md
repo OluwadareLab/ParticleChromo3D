@@ -1,7 +1,8 @@
 ------------------------------------------------------------------------------------------------------------------------------------
 # ParticleChromo3D -  Particle Swarm Optimization for Chromosome and genome 3D Structure Prediction from Hi-C Data  
 ------------------------------------------------------------------------------------------------------------------------------------
-**OluwadareLab,**
+**OluwadareLab**
+
 **University of Colorado, Colorado Springs**
 
 ----------------------------------------------------------------------
@@ -20,7 +21,7 @@
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Department of Computer Science <br />
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;University of Colorado, Colorado Springs <br />
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: ooluwada@uccs.edu 
-     
+    
 --------------------------------------------------------------------	
 
 **1.	Content of folders:**
@@ -31,7 +32,7 @@ src: Python Source Code and utility's used
 -----------------------------------------------------------
 In our study, we used the synthetic dataset from [Adhikari, et al](https://doi.org/10.1186/s12864-016-3210-4). The contact maps, the original models and their reconstructed models used in this study were downloaded from [here](http://sysbio.rnet.missouri.edu/bdm_download/chromosome3d/unzipped/Input/Synthetic/)
 
-The realdataset was downloaded from [GSDB](http://sysbio.rnet.missouri.edu/3dgenome/GSDB/details.php?id=GM12878)
+The GM12878 cell Hi-C dataset, GEO Accession number GSE63525, was downloaded from [GSDB](http://sysbio.rnet.missouri.edu/3dgenome/GSDB/details.php?id=GM12878) with GSDB ID: OO7429SF
 
 **3.	Input matrix file format:**
 -----------------------------------------------------------
@@ -60,20 +61,18 @@ positional arguments: <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;Input filed in the format of a matrix of contacts <br />
 
 optional arguments: <br />	
-	&nbsp;-h, --help  show this help message and exit<br /><br />
+	&nbsp;-h, --help  show this help message and exit<br />
 	&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br /><br />	
+		&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
 	&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 30000] <br /><br />	
+		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 30000] <br />
 	&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.1] <br /><br />	
+		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.1] <br />	
 	&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 	
-	
-
 **5.	Output:**
 -----------------------------------------------------------
-A pdb file and a log file.
+A pdb file and  log file.
 
