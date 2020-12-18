@@ -2,7 +2,6 @@
 # ParticleChromo3D -  Particle Swarm Optimization for Chromosome and genome 3D Structure Prediction from Hi-C Data  
 ------------------------------------------------------------------------------------------------------------------------------------
 **OluwadareLab**
-
 **University of Colorado, Colorado Springs**
 
 ----------------------------------------------------------------------
