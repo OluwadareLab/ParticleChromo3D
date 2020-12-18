@@ -13,8 +13,10 @@ from scipy.spatial import distance
 
     Swarms are in a cluster format as this allows python to do vector math on the swarm array which is MANY times more efficient
     than doing individual objects of swarms
-
-    Developer: Michael Middleton mmiddlet@uccs.edu 12/4/2020
+    
+    Developer: 
+    David Vadnais dvadnais@uccs.edu
+    DMichael Middleton mmiddlet@uccs.edu 12/4/2020
 
 '''
 
