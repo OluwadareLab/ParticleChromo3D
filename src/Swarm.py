@@ -172,12 +172,13 @@ class Swarm:
         return self.dist
 
     # Calculates the cost of each swarm
-    # Root Mean Squared Error
+    # Sum Squared Error
     def Cost(self):
         self.Calc_Dist()
 
         #newCost = np.sqrt( (1/self.pc) * np.sum( (self.dist-ref[:,3])**2, axis=1 ) )
         newCost = np.sum( (self.dist-self.ref[:,3])**2, axis=1 )
+        #newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))
         newCost = newCost.reshape((self.pos.shape[0],1))
 
         self.Update_Cost(newCost)

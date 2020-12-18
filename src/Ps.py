@@ -73,7 +73,7 @@ def operation(i, swarm):
     swarm.Cost()
 
 # Optimizes single swarm
-def Optimize(maxRange, inFilePtr, outFilePtr, convFact = 3.1):
+def Optimize(maxRange, inFilePtr, outFilePtr, convFact):
     contact, points, zeroInd = Helper.Read_Data(inFilePtr,maxRange, convFact)
     swarm = Swarm(contact, len(points), randVal=randRange, swarmCount=swarmCount, zeroInd=zeroInd)
 
@@ -116,13 +116,12 @@ def Par_Choice(rangeSpace, inFilePtr, outFilePtr, alpha):
 def Full_List(rangeSpace, inputFilePtr, outFilePtr , alpha):
     convStore = []
     
-    print(inputFilePtr)
     convStore.append(Par_Choice(rangeSpace, inputFilePtr, outFilePtr, alpha))
-    print(convStore)
+    print("pearson:" + str(convStore[0][0]) + " spearman:"+
+          str(convStore[0][1]) + " rmse:" + str(convStore[0][2]))
 
     Helper.Write_List(convStore, outFilePtr)
     return convStore
-
 
 sys.setrecursionlimit(10000)
 PROC_COUNT = cpu_count()
@@ -130,13 +129,6 @@ PROC_COUNT = cpu_count()
 inFilePtr = '../input-and-models/Input/HiC/'
 outFilePtr = './chr.pdb"'
 
-tempInPtr = inFilePtr + 'chr' + str(12) + '_1mb_matrix.txt'
-tempOutPtr = outFilePtr + 'chr' + str(12) + '_1mb_matrix_converg.txt'
-
-swarmCount = 20 # Number of swarms in system
-ittCount = 20000 # Maximum itterations before stop
-threshold = 0.1 # Error threshold before stoping
-randRange = 1.0 # Range of x,y,z starting coords. Random value bewtween -randRange,randRange 
 
 rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific dataset. Use two values [one, two] to multithread through a range of those two values at a interval of 5000
 
@@ -147,10 +139,13 @@ parser = argparse.ArgumentParser("ParticleChromo3D")
 parser.add_argument("infile", help="Matrix of contacts", type=str)
 parser.add_argument("-o","--outfile", help="File to output pdb model [Default ./]", type=str, default="./chr.pdb")
 
-parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Default 20]", type=int, default=20)
+parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Default 20]", type=int, default=10)
 parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 20000]", type=int, default=20000)
-parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.1]", type=float, default=0.1)
+parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.1]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
+#parser.add_argument("-as","--aStep", help="Convert factor step [Default .2]", type=float, default=.2)
+#parser.add_argument("-as","--aStep", help="Convert factor step [Default .2]", type=float, default=.2)
+#parser.add_argument("-as","--aStep", help="Convert factor step [Default .2]", type=float, default=.2)
 
 args = parser.parse_args()
 
@@ -167,8 +162,8 @@ if args.threshold:
 if args.randRange:
     randRange = args.randRange
 
-alphas = np.array(range(1,20,2))/10
-
+#alphas = np.array(range(20,50,2))/100
+alphas = np.array(range(90,111,10))/100
 if len(rangeSpace) == 0:
     rangeSpace.append(20000)
 
@@ -180,7 +175,7 @@ if not os.path.exists('outputFolder'):
     
 bestSpearm = -3
 bestAlpha = alphas[0]
-
+print(inFilePtr)
 for thisAlpha in alphas:
     print("alpha is ", thisAlpha)
     thisOutFilePtr = 'outputFolder/'+outFilePtr +str(thisAlpha)
@@ -192,9 +187,10 @@ for thisAlpha in alphas:
         bestAlpha = thisAlpha
         bestSpearm= outputOfSwarm[1]
         bestPearsonRHO = outputOfSwarm[0]
+        bout = outputOfSwarm
 print("Input file: ", inFilePtr)
 print("Convert factor:: ",bestAlpha)
-print("Best Cost  : ", bestCost)    
+print("SSE at best spearman : ", bestCost)    
 print("Best Spearman correlation Dist vs. Reconstructed Dist  : ", bestSpearm) 
-print("Best Pearson correlation Dist vs. Reconstructed Dist  : ", bestPearsonRHO) 
+print("Best Pearson correlation Dist vs. Reconstructed Dist: ", bestPearsonRHO) 
 Write_Log("outputFolder/bestAlpha.log", inFilePtr, bestAlpha, bestCost, bestSpearm,bestPearsonRHO)

@@ -10,12 +10,27 @@ import copy
 
 # Reads in a matrix of contacts
 def Read_Matrix_To_List(filePtr):
-    contact = np.genfromtxt(filePtr, delimiter=' ')
-
+    
+    fout = filePtr + ".stripped"
+    clean_lines = []
+    f= open(filePtr, "r")
+    lines = f.readlines()
+    for l in lines:
+        res = str(" ".join(l.split()))
+        clean_lines.append(res)
+    f.close()
+    
+    with open(fout, "w") as f:
+        f.writelines('\n'.join(clean_lines))
+    f.close()
+    contact = np.genfromtxt(fout, delimiter=' ')
+    print(contact)
+    
+    #delete zero contacts
     contact = contact[~np.all(contact == 0, axis=0)]
     idx = np.argwhere(np.all(contact[..., :] == 0, axis=0))
     contact = np.delete(contact, idx, axis=1)
-
+    
     count = 0
 
     zeroInd = []
@@ -62,30 +77,11 @@ def Read_Data(filePtr, maxScale, convFactor=None):
 
     mean = np.mean(constraint[:,2])
 
-    # Performs scaling on the contact matrix and then converts to distance
     dist = np.zeros(constraint.shape[0])
-    if maxScale is not None:
-#		constraint[:,2] = Scale_Arr(constraint[:,2],1000,maxScale)
-        constrAvg, avgDist = avgCalc(constraint, convFactor)
-        dist = ( 1.0 / (constrAvg**convFactor) )
-    else:
-        saveLow = float('inf')
-        stepVals = range(2000, 100000, 2000)
-        for i in stepVals:
-            tmpConstraint = copy.copy(constraint)
-            tmpConstraint[:,2] = Scale_Arr(tmpConstraint[:,2],1000, i)
-
-            constrAvg, avgDist = avgCalc(tmpConstraint, convFactor)
-            tmpDist = ( 10 / ((constrAvg**convFactor)*avgDist) )
-
-            tmpConstraint = np.insert(tmpConstraint,3,tmpDist,axis=1)
-            swarm = Swarm.Swarm(tmpConstraint, len(pointMap), randVal=1, swarmCount=5, zeroInd=zeroInd)
-
-            if np.abs(swarm.gBest[1]) < saveLow:
-                dist = copy.copy(tmpDist)
-                saveLow = np.abs(swarm.gBest[1])
-                saveRange = i
-                print(saveRange)
+    #if maxScale is not None:
+        #constraint[:,2] = Scale_Arr(constraint[:,2],1000,20000)
+        #constrAvg = avgCalc(constraint, convFactor)
+    dist = ( 1.0 / (constraint[:,2]**convFactor) )
 
     constraint = np.insert(constraint,3,dist,axis=1)
 
@@ -101,9 +97,9 @@ def avgCalc(constraint, convFactor):
     for i in range(constraint.shape[0]):
         constrAvg[i] = constrAvg[i]/avgIf
 
-    avgDist = (constrAvg**convFactor).mean()
+    #avgDist = (constrAvg**convFactor).mean()
 
-    return constrAvg, avgDist
+    return constrAvg#, avgDist
 
 # Writes xyz list to a PDB
 def Write_Output(filePtr, xyz):
@@ -171,7 +167,7 @@ def WritePDB(positions, pdb_file, ctype = "0"):
         if j > bin_num:
             if ctype == "1":
                 continue
-            j = 1
+            #j = 1
         col3 = str(j)
 
         col2 = " " * (5 - len(col2)) + col2
