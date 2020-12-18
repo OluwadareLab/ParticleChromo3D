@@ -178,9 +178,7 @@ if args.threshold:
     threshold = args.threshold
 if args.randRange:
     randRange = args.randRange
-
-#alphas = np.array(range(90,111,10))/100
-
+    
 if len(rangeSpace) == 0:
     rangeSpace.append(20000)
 
@@ -209,7 +207,7 @@ f.close()
 
 #for thisAlpha in alphas:
 #print("alpha is ", thisAlpha)
-theseAlphas = np.array([0.1, 2.0, 0.1])*100
+theseAlphas = np.array([0.1, 1.5, 0.01])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 #print(len(thisAlpha))
 #thisOutFilePtr = outFilePtr 
