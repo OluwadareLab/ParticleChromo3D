@@ -170,21 +170,27 @@ class Swarm:
                 self.dist[i] = tmpDist
 
         return self.dist
-
+    
     # Calculates the cost of each swarm
     # Sum Squared Error
     def Cost(self):
         self.Calc_Dist()
 
         #newCost = np.sqrt( (1/self.pc) * np.sum( (self.dist-ref[:,3])**2, axis=1 ) )
-        newCost = np.sum( (self.dist-self.ref[:,3])**2, axis=1 )
-        #newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))
+        newCost = np.sum( (self.dist-self.ref[:,3])**2, axis=1 )#SSE
+        #newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))#RMSE
+        #delta = 1.0
+        #y = self.ref[:,3]
+        #yHat = self.dist
+        #newCost = np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)),axis=1)
+        #print("ME:" ,newCost)
+        #print("notME",dnewCost)
+        
         newCost = newCost.reshape((self.pos.shape[0],1))
 
         self.Update_Cost(newCost)
 
         return self.cost
-
 
     # Calculates the velocitys of each particle
     def Calc_Vel(self, ittMax, itt):

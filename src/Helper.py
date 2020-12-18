@@ -10,22 +10,7 @@ import copy
 
 # Reads in a matrix of contacts
 def Read_Matrix_To_List(filePtr):
-    
-    fout = filePtr + ".stripped"
-    clean_lines = []
-    f= open(filePtr, "r")
-    lines = f.readlines()
-    for l in lines:
-        res = str(" ".join(l.split()))
-        clean_lines.append(res)
-    f.close()
-    
-    with open(fout, "w") as f:
-        f.writelines('\n'.join(clean_lines))
-    f.close()
-    contact = np.genfromtxt(fout, delimiter=' ')
-    print(contact)
-    
+    contact = np.genfromtxt(filePtr, delimiter=' ')
     #delete zero contacts
     contact = contact[~np.all(contact == 0, axis=0)]
     idx = np.argwhere(np.all(contact[..., :] == 0, axis=0))
@@ -58,7 +43,7 @@ def Read_Data_List(filePtr):
     return np.loadtxt(filePtr), None
 
 # Reads the data and puts it into a matrix of distances
-def Read_Data(filePtr, maxScale, convFactor=None):
+def Read_Data(filePtr, convFactor=None):
     constraint, zeroInd = Read_Matrix_To_List(filePtr)
     #constraint, zeroInd = Read_Data_List(filePtr)
 
@@ -77,13 +62,13 @@ def Read_Data(filePtr, maxScale, convFactor=None):
 
     mean = np.mean(constraint[:,2])
 
-    dist = np.zeros(constraint.shape[0])
+    #dist = np.zeros(constraint.shape[0])
     #if maxScale is not None:
         #constraint[:,2] = Scale_Arr(constraint[:,2],1000,20000)
         #constrAvg = avgCalc(constraint, convFactor)
-    dist = ( 1.0 / (constraint[:,2]**convFactor) )
+    #dist = ( 1.0 / (constraint[:,2]**convFactor) )
 
-    constraint = np.insert(constraint,3,dist,axis=1)
+    #constraint = np.insert(constraint,3,dist,axis=1)
 
     return constraint, pointMap, zeroInd
 
@@ -104,7 +89,7 @@ def avgCalc(constraint, convFactor):
 # Writes xyz list to a PDB
 def Write_Output(filePtr, xyz):
     xyz = Scale_Arr(xyz)
-    WritePDB(xyz, filePtr+'.pdb')
+    WritePDB(xyz, filePtr)
 
 # Scales a range of values
 def Scale_Arr(xyz, minVal=-10, maxVal=10):
@@ -202,3 +187,5 @@ def Write_Log(outfile, inFile, bestAlpha, rmse, bestSpearmanRHO,bestPearsonRHO):
 
     FILE.write(inString);
     FILE.close();
+    
+    
