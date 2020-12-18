@@ -51,9 +51,9 @@ Biopython - 1.7.8 <br />
 scipy - 1.5.2 <br />
 numpy - 1.19.2 <br />
 
-usage: python3 Ps.py [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT]<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;[-t THRESHOLD] [-rr RANDRANGE]<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;infile
+usage: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT]<br />
+		     &nbsp;&nbsp;&nbsp;&nbsp;[-t THRESHOLD] [-rr RANDRANGE]<br />
+			
 
 positional arguments: <br />
 &nbsp;infile  <br />
