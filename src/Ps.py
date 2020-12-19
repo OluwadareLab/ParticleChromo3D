@@ -124,7 +124,6 @@ def Par_Choice(inFilePtr, outFilePtr, alpha):
     else:
         bestSwarm = Optimize( inFilePtr, outFilePtr, alpha)
     contact = np.insert(contact,3, 1.0 / (contact[:,2]**bestAlpha) ,axis=1)
-    outFilePtr = 'outputFolder/'+outFilePtr
     print(bestSwarm)
     Write_Stats(swarmForPDB, contact, outFilePtr)
 
@@ -144,7 +143,6 @@ sys.setrecursionlimit(10000)
 PROC_COUNT = cpu_count()
 
 inFilePtr = '../input-and-models/Input/HiC/'
-outFilePtr = './chr.pdb"'
 
 
 rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific dataset. Use two values [one, two] to multithread through a range of those two values at a interval of 5000
@@ -177,11 +175,7 @@ if len(rangeSpace) == 0:
     rangeSpace.append(20000)
 
 if len(rangeSpace) > 2 and (rangeSpace[0] == rangeSpace[1]):
-    rangeSpace.pop()
-    
-if not os.path.exists('outputFolder'):
-    os.makedirs('outputFolder')
-    
+    rangeSpace.pop()   
 
 print(inFilePtr)
 

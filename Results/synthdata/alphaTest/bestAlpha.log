@@ -1,0 +1,5 @@
+Input file: ../input-and-models/Input/Synthetic/chainDres5_Matrix_noise000.txt
+Convert factor:: 0.2
+Best cost  : 2.3929247144340113
+Best Spearman correlation Dist vs. Reconstructed Dist  : 0.9999824134660547
+Best Pearson correlation Dist vs. Reconstructed Dist  : 0.9999792410310384

@@ -198,8 +198,8 @@ class Swarm:
     def Calc_Vel(self, ittMax, itt):
         '''V(t+1) = weight*V(t) + conP*ranP(pBest-X(t)) + conG*ranG(gBest-x(t))'''
 
-        ranP = np.random.rand(self.pos.shape[0],self.pos.shape[1],self.pos.shape[2])
-        ranG = np.random.rand(self.pos.shape[0],self.pos.shape[1],self.pos.shape[2])
+        ranP = np.random.rand(self.pos.shape[0],self.pos.shape[1],self.pos.shape[2])#local rand  variation
+        ranG = np.random.rand(self.pos.shape[0],self.pos.shape[1],self.pos.shape[2])#global rand variarion
 
         # Way to calculate constants, not used anymore but for future reference
         #weight = self.Calc_Const(ittMax,itt,0.1,0.5)
@@ -208,8 +208,8 @@ class Swarm:
 
         # Constants found to work the best
         weight = 0.5
-        conP=0.3
-        conG=2.2
+        conP=0.3 #Local confidence
+        conG=2.2 #Global confidence
 
         self.vel = (weight*self.vel) + (conP*ranP*(self.posBest-self.pos)) + (conG*ranG*(self.gBest[0]-self.pos))
 
