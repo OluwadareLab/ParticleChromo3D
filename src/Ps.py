@@ -142,7 +142,6 @@ def Full_List( inputFilePtr, outFilePtr , alpha):
 sys.setrecursionlimit(10000)
 PROC_COUNT = cpu_count()
 
-inFilePtr = '../input-and-models/Input/HiC/'
 
 
 rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific dataset. Use two values [one, two] to multithread through a range of those two values at a interval of 5000
@@ -199,8 +198,10 @@ theseAlphas = np.array([0.1, 1.0, 0.1])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 #print(len(thisAlpha))
 #thisOutFilePtr = outFilePtr
-lenif = len(inFilePtr)
-outFilePtr =  'output' #inFilePtr[0:lenif-4]
+
+print(inFilePtr)
+outFilePtr =  os.path.basename(os.path.basename(inFilePtr))
+outFilePtr = os.path.splitext(outFilePtr)[0]
 print(outFilePtr)
 outputOfSwarm = Full_List( inFilePtr+".stripped", outFilePtr, theseAlphas)[0]
 print(outputOfSwarm)
@@ -216,4 +217,4 @@ print("Convert factor:: ",bestAlpha)
 print("SSE at best spearman : ", bestCost)    
 print("Best Spearman correlation Dist vs. Reconstructed Dist  : ", bestSpearm) 
 print("Best Pearson correlation Dist vs. Reconstructed Dist: ", bestPearsonRHO) 
-Write_Log("bestAlpha.log", inFilePtr, bestAlpha, bestCost, bestSpearm, bestPearsonRHO)
+Write_Log(outFilePtr +".log", inFilePtr, bestAlpha, bestCost, bestSpearm, bestPearsonRHO)
