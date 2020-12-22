@@ -1,11 +1,15 @@
-#Test Pdb Storage
+# Test Pdb Storage
 defaults : swarm size 20, threshold 0.000001, iterations 30000
 
-##Alpha Test
+## Alpha Test
 tests alpha 0.1-1.9 by .1
 
-#Swarm Size Test
+## Swarm Size Test
 swarm size 5,10,20
 
-# Threshold Test
+## Threshold Test
 0.000001 -> 0.1
+
+## Noise test
+all noise levels avaliable.
+newDefaults : swarm size 5, threshold 0.000001, iterations 30000
