@@ -195,12 +195,13 @@ f.close()
 
 #for thisAlpha in alphas:
 #print("alpha is ", thisAlpha)
-theseAlphas = np.array([0.1, 2.0, 0.1])*100
+theseAlphas = np.array([0.1, 1.0, 0.1])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 #print(len(thisAlpha))
 #thisOutFilePtr = outFilePtr
 lenif = len(inFilePtr)
-outFilePtr =  inFilePtr[0:lenif-4]
+outFilePtr =  'output' #inFilePtr[0:lenif-4]
+print(outFilePtr)
 outputOfSwarm = Full_List( inFilePtr+".stripped", outFilePtr, theseAlphas)[0]
 print(outputOfSwarm)
 
@@ -215,4 +216,4 @@ print("Convert factor:: ",bestAlpha)
 print("SSE at best spearman : ", bestCost)    
 print("Best Spearman correlation Dist vs. Reconstructed Dist  : ", bestSpearm) 
 print("Best Pearson correlation Dist vs. Reconstructed Dist: ", bestPearsonRHO) 
-Write_Log("outputFolder/bestAlpha.log", inFilePtr, bestAlpha, bestCost, bestSpearm, bestPearsonRHO)
+Write_Log("bestAlpha.log", inFilePtr, bestAlpha, bestCost, bestSpearm, bestPearsonRHO)
