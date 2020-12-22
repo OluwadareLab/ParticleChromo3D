@@ -198,7 +198,9 @@ f.close()
 theseAlphas = np.array([0.1, 1.0, 0.05])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 #print(len(thisAlpha))
-#thisOutFilePtr = outFilePtr 
+#thisOutFilePtr = outFilePtr
+lenif = len(inFilePtr)
+outFilePtr =  inFilePtr[lenif-5:lenif]
 outputOfSwarm = Full_List( inFilePtr+".stripped", outFilePtr, theseAlphas)[0]
 print(outputOfSwarm)
 
