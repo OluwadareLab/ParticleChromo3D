@@ -64,7 +64,7 @@ optional arguments: <br />
 	&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 30000] <br />
 	&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.1] <br />	
+		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.000001] <br />	
 	&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
