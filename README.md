@@ -62,11 +62,11 @@ optional arguments: <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 30000] <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Maximum number of iterations before stop [Default 30000] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.000001] <br />	
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.000001] <br />	
 	&nbsp;&nbsp;&nbsp;&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 	
 **5.	Output:**
