@@ -46,26 +46,26 @@ conda create --name ParticleChromo3D --file ParticleChromo3d_env.txt
 
 Or install dependencies individually <br />
 
-<u>Dependencies:</u> <br />
-&nbsp;&nbsp;Biopython - 1.7.8 <br />
-&nbsp;&nbsp;scipy - 1.5.2 <br />
-&nbsp;&nbsp;numpy - 1.19.2 <br />
+Dependencies:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Biopython - 1.7.8 <br />
+&nbsp;&nbsp;&nbsp;&nbsp;scipy - 1.5.2 <br />
+&nbsp;&nbsp;&nbsp;&nbsp;numpy - 1.19.2 <br />
 
-<u>usage</u>: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
+usage: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
 			
-<u>positional arguments:</u> <br />
-&nbsp;&nbsp;infile  <br />
+positional arguments: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;infile  <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;Input filed in the format of a matrix of contacts <br />
 
-<u>optional arguments:</u> <br />	
-	&nbsp;&nbsp;-h, --help  show this help message and exit<br />
-	&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
-	&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
+optional arguments: <br />	
+	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 30000] <br />
-	&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.000001] <br />	
-	&nbsp;&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 	
