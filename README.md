@@ -46,26 +46,26 @@ conda create --name ParticleChromo3D --file ParticleChromo3d_env.txt
 
 Or install dependencies individually <br />
 
-Dependencies: <br />
-Biopython - 1.7.8 <br />
-scipy - 1.5.2 <br />
-numpy - 1.19.2 <br />
+<u>Dependencies:</u> <br />
+&nbsp;&nbsp;Biopython - 1.7.8 <br />
+&nbsp;&nbsp;scipy - 1.5.2 <br />
+&nbsp;&nbsp;numpy - 1.19.2 <br />
 
-usage: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
+<u>usage</u>: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
 			
-positional arguments: <br />
-&nbsp;infile  <br />
+<u>positional arguments:</u> <br />
+&nbsp;&nbsp;infile  <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;Input filed in the format of a matrix of contacts <br />
 
-optional arguments: <br />	
-	&nbsp;-h, --help  show this help message and exit<br />
-	&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
+<u>optional arguments:</u> <br />	
+	&nbsp;&nbsp;-h, --help  show this help message and exit<br />
+	&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
-	&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
+	&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Maximum itterations before stop [Default 30000] <br />
-	&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
+	&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.000001] <br />	
-	&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
+	&nbsp;&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 	
