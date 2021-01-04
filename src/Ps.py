@@ -192,17 +192,11 @@ with open(fout, "w") as f:
 f.close()
 
 
-#for thisAlpha in alphas:
-#print("alpha is ", thisAlpha)
 theseAlphas = np.array([0.1, 1.0, 0.1])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
-#print(len(thisAlpha))
-#thisOutFilePtr = outFilePtr
 
-print(inFilePtr)
 outFilePtr =  os.path.basename(os.path.basename(inFilePtr))
 outFilePtr = os.path.splitext(outFilePtr)[0]
-print(outFilePtr)
 outputOfSwarm = Full_List( inFilePtr+".stripped", outFilePtr, theseAlphas)[0]
 print(outputOfSwarm)
 

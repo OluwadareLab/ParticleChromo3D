@@ -148,7 +148,7 @@ class Swarm:
             # If itterations are over a certain amount a full new swarm is calculated
             if(itt < 1000):
                 self.pos[i] = self.Rand_Cur()
-            else:	
+            else:
                 # Otherwise, shift only the cutsize amount of particles			
                 self.pos[i], mask = self.Rand_shift(self.pos[i], cutSize, thresh)
                 self.vel[i][mask] = np.zeros((self.vel.shape[1], self.vel.shape[2]))[mask]
@@ -209,7 +209,7 @@ class Swarm:
         # Constants found to work the best
         weight = 0.5
         conP=0.3 #Local confidence
-        conG=2.2 #Global confidence
+        conG=0.1 #Global confidence
 
         self.vel = (weight*self.vel) + (conP*ranP*(self.posBest-self.pos)) + (conG*ranG*(self.gBest[0]-self.pos))
 
