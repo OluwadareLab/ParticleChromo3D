@@ -209,7 +209,7 @@ class Swarm:
         # Constants found to work the best
         weight = 0.5
         conP=0.3 #Local confidence
-        conG=0.1 #Global confidence
+        conG=2.2 #Global confidence
 
         self.vel = (weight*self.vel) + (conP*ranP*(self.posBest-self.pos)) + (conG*ranG*(self.gBest[0]-self.pos))
 
