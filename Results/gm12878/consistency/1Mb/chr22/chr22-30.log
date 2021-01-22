@@ -1,0 +1,5 @@
+Input file: ../../input-and-models/Input/GM12878_input/KR_1mb/chr22_matrix.txt
+Convert factor:: 0.2
+Best cost  : 0.012258305573821748
+Best Spearman correlation Dist vs. Reconstructed Dist  : 0.9568121864756526
+Best Pearson correlation Dist vs. Reconstructed Dist  : 0.9500963156198506
