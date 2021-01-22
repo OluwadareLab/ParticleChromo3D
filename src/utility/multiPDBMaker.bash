@@ -1,7 +1,8 @@
 #!/bin/bash
 
-chrNum=1
-infile=../../input-and-models/Input/GM12878_input/KR_500kb/chr${chrNum}_matrix.txt
+chrNum=10
+#infile=../../input-and-models/Input/GM12878_input/KR_500kb/chr${chrNum}_matrix.txt
+infile=../../input-and-models/Input/GM12878_input/KR_1mb/chr${chrNum}_matrix.txt
 
 for i in {1..30}
 do
