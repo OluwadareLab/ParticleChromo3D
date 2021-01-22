@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chrNum=15
+chrNum=5
 infile=../../input-and-models/Input/GM12878_input/KR_1mb/chr${chrNum}_matrix.txt
 
 for i in {1..30}
