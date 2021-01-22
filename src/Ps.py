@@ -155,12 +155,18 @@ parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Defa
 parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 30000]", type=int, default=30000)
 parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.1]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
+parser.add_argument("-o","--outfile", help="File to output pdb model [Default ./]", type=str, default="./chr.pdb")
+
 
 
 args = parser.parse_args()
 
 if args.infile:
     inFilePtr = args.infile
+if args.outfile:
+    outFilePtr = args.outfile
+else: 
+    outFilePtr = "noIn"
 if args.swarmCount:
     swarmCount = args.swarmCount
 if args.ittCount:
@@ -192,11 +198,12 @@ with open(fout, "w") as f:
 f.close()
 
 
-theseAlphas = np.array([0.1, 1.0, 0.1])*100
+theseAlphas = np.array([0.1, 2.0, 0.1])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 
-outFilePtr =  os.path.basename(os.path.basename(inFilePtr))
-outFilePtr = os.path.splitext(outFilePtr)[0]
+if outFilePtr == "noIn":
+    outFilePtr =  os.path.basename(os.path.basename(inFilePtr))
+    outFilePtr = os.path.splitext(outFilePtr)[0]
 outputOfSwarm = Full_List( inFilePtr+".stripped", outFilePtr, theseAlphas)[0]
 print(outputOfSwarm)
 
