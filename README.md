@@ -38,7 +38,7 @@ The GM12878 cell Hi-C dataset, GEO Accession number GSE63525, was downloaded fro
 
 Square Matrix Input format: The square matrix is a space seperated N by N intra-chromosomal contact matrix derived from Hi-C data, where N is the number of equal-sized regions of a chromosome.
 
-**4.	Usage:**
+**4.	Dependencies Installation:**
 -----------------------------------------------------------
 
 Install env with anaconda from spec-file: <br />
@@ -51,6 +51,8 @@ Dependencies:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;scipy - 1.5.2 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;numpy - 1.19.2 <br />
 
+**5.	Usage:**
+-----------------------------------------------------------
 usage: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
 			
 positional arguments: <br />
