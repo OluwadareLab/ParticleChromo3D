@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chrNum=22
+chrNum=1
 infile=../../input-and-models/Input/GM12878_input/KR_500kb/chr${chrNum}_matrix.txt
 #infile=../../input-and-models/Input/GM12878_input/KR_1mb/chr${chrNum}_matrix.txt
 
