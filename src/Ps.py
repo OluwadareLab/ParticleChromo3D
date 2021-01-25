@@ -140,7 +140,10 @@ def Full_List( inputFilePtr, outFilePtr , alpha):
     return convStore
 
 sys.setrecursionlimit(10000)
-PROC_COUNT = cpu_count()-6
+if cpu_count() <= 2:
+    PROC_COUNT = cpu_count()
+else :
+    PROC_COUNT = cpu_count()-1#attempt to reduce thrashing.
 
 
 
