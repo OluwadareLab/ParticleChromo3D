@@ -33,7 +33,7 @@ class Swarm:
     def __init__(self, ref, pointCount, randVal=0.5, swarmCount = 10, zeroInd=None, swarmComb = None):
 
         Swarm.id += 1
-        self.id = Swarm.id # ID of swarm if using multiprocession with multiple swarm clusters
+        self.id = Swarm.id # ID of swarm if using multiprocessing with multiple swarm clusters
 
         self.pc = pointCount # Pointcount
 
@@ -123,21 +123,21 @@ class Swarm:
             self.gBest = (copy.copy(self.pos[currentBest]),copy.copy(self.cost[currentBest][0]), copy.copy(self.dist[currentBest]))
 
     # Updates the position of each swarm
-    # itt: the current itteration of program
+    # itt: the current iteration of program
     def Update_Pos(self, itt):
         '''X(t+1) = X(t)+V(t+1)'''
 
         # Gets a random cutize
         cutSize = np.random.randint(1, (int)(self.pc-1))
 
-        # Adjust threshold depending on itteration to gradually adjust
+        # Adjust threshold depending on iteration to gradually adjust
         if (itt > 500):
             thresh = (1/itt)*100
         else:
             thresh = 1
 
-        # Gets a boolean array of values that checks if a certin number of particles has changed in the last itteration
-        # This certain number is calculated in Calc_Const and is based on the number of itterations
+        # Gets a boolean array of values that checks if a certain number of particles has changed in the last iteration
+        # This certain number is calculated in Calc_Const and is based on the number of iterations
         # The boolean array that is calculated is then used to shift any swarms that have been calculated to not been changing
         tmpMsk = self.locOpCount > self.Calc_Const(10000,itt,5,15)
         tmpMsk = tmpMsk.reshape(self.locOpCount.shape[0])
@@ -145,7 +145,7 @@ class Swarm:
 
         # For each swarm that is being changed
         for i in changeInd:
-            # If itterations are over a certain amount a full new swarm is calculated
+            # If iterations are over a certain amount a full new swarm is calculated
             if(itt < 1000):
                 self.pos[i] = self.Rand_Cur()
             else:
@@ -216,7 +216,7 @@ class Swarm:
         return self.vel 
 
     # Function that calculates a constant value
-    # ittMax: maximum number of itterawtions
+    # ittMax: maximum number of itterations
     # k: current itterations
     # W_MIN: constant min
     # W_MAX: constant max
