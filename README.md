@@ -25,9 +25,9 @@
 
 **1.	Content of folders:**
 -----------------------------------------------------------	
-src: Python Source Code and utility's used. <br />
-input-and-models: Synthetic and Real Hi-C datasets used. <br />
-Results: Output Structions generated for all the experiemnts performed.<br />
+<ul> src: Python Source Code and utility's used. <br />
+<ul> input-and-models: Synthetic and Real Hi-C datasets used. <br />
+<ul> Results: Output Structions generated for all the experiemnts performed.<br />
 
 **2.	Hi-C Data used in this study:**
 -----------------------------------------------------------
