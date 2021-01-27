@@ -26,6 +26,8 @@
 **1.	Content of folders:**
 -----------------------------------------------------------	
 src: Python Source Code and utility's used
+input-and-models: Synthetic and Real Hi-C datasets used
+Results: Output Structions generated for all the experiemnts performed.
 
 **2.	Hi-C Data used in this study:**
 -----------------------------------------------------------
@@ -53,7 +55,7 @@ Dependencies:<br />
 
 **5.	Usage:**
 -----------------------------------------------------------
-usage: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
+usage: **python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />**
 			
 positional arguments: <br />
 &nbsp;&nbsp;&nbsp;&nbsp;infile  <br />
