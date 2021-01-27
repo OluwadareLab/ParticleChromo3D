@@ -57,11 +57,10 @@ Dependencies:<br />
 -----------------------------------------------------------
 usage: **python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />**
 			
-positional arguments: <br />
-&nbsp;&nbsp;&nbsp;&nbsp;infile  <br />
-	&nbsp;&nbsp;&nbsp;&nbsp;Input filed in the format of a matrix of contacts <br />
+* positional arguments: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;infile: Input file in the format of a matrix of contacts <br />
 
-optional arguments: <br />	
+* optional arguments: <br />	
 	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
