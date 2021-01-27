@@ -27,7 +27,7 @@
 -----------------------------------------------------------	
 * src: Python Source Code and utility's used. <br />
 * input-and-models: Synthetic and Real Hi-C datasets used. <br />
-* Results: Output Structions generated for all the experiemnts performed.<br />
+* Results: Output Structions generated for all the experiments performed.<br />
 
 **2.	Hi-C Data used in this study:**
 -----------------------------------------------------------
