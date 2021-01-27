@@ -72,7 +72,7 @@ usage: **python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOL
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 	
-**5.	Output:**
+**6.	Output:**
 -----------------------------------------------------------
 A pdb file and  log file.
 
