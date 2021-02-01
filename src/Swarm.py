@@ -7,8 +7,8 @@ from scipy.spatial import distance
 
 
 ''' Swarm Cluster for PSO calculations on HiC data to find optimal distances for xyz points of beads
-        This creates a cluster of swarms, each swarm is represented by a list of xyz coordinates, 
-        a particle of each swarm is the individual coordinate (x,y, or z) of each bead. A different velocity is applied
+        This creates a cluster of particles, each particle is represented by a list of xyz coordinates, 
+        a point of each particle is the individual coordinate (x,y, or z) of each bead. A different velocity is applied
         to each individual coordinate (x, y, or z).
 
     Swarms are in a cluster format as this allows python to do vector math on the swarm array which is MANY times more efficient
@@ -27,10 +27,10 @@ class Swarm:
     # ref: distance matrix from HiC data
     # pointCount: Number of beads
     # randVal: random value to calculate initial x,y,z from
-    # swarmCount: number of swarms in cluster
+    # particleCount: number of particles in cluster
     # zeroInd: Used to delete in distance calculation
     # swarmComb: used to combine multiple swarms if doing multiple passes
-    def __init__(self, ref, pointCount, randVal=0.5, swarmCount = 10, zeroInd=None, swarmComb = None):
+    def __init__(self, ref, pointCount, randVal=0.5, particleCount = 10, zeroInd=None, swarmComb = None):
 
         Swarm.id += 1
         self.id = Swarm.id # ID of swarm if using multiprocessing with multiple swarm clusters
@@ -46,16 +46,16 @@ class Swarm:
         self.ref = ref # Reference distance matrix
         self.zeroInd = zeroInd
 
-        # Creates a list of swarms where each swarm is a list of xyz coordinates of size pointcount
+        # Creates a list of particles where each particle is a list of xyz coordinates of size pointcount
         tempList = []
         if swarmComb is None:
-            for i in range(swarmCount):
+            for i in range(particleCount):
                 tempList.append(self.Rand_Cur())
         else:
             for swarm in swarmComb:
                 tempList.append(swarm.gBest[0])
 
-            for i in range(swarmCount-len(swarmComb)):
+            for i in range(particleCount-len(swarmComb)):
                 cutSize = np.random.randint(1, (int)(self.pc/2))
                 randCopy = np.random.choice(swarmComb).gBest[0]
                 tempPos, mask = self.Rand_shift(randCopy, cutSize, 0.1)
@@ -103,7 +103,7 @@ class Swarm:
 
         return temp, mask
 
-    # Updates the cost of each swarm in cluster
+    # Updates the cost of each particle in cluster
     def Update_Cost(self, newCost):
         tmpMsk = newCost > self.cost
 
@@ -122,7 +122,7 @@ class Swarm:
         if (self.gBest is None) or (self.cost[currentBest] < self.gBest[1]):
             self.gBest = (copy.copy(self.pos[currentBest]),copy.copy(self.cost[currentBest][0]), copy.copy(self.dist[currentBest]))
 
-    # Updates the position of each swarm
+    # Updates the position of each particle
     # itt: the current iteration of program
     def Update_Pos(self, itt):
         '''X(t+1) = X(t)+V(t+1)'''
@@ -143,7 +143,7 @@ class Swarm:
         tmpMsk = tmpMsk.reshape(self.locOpCount.shape[0])
         changeInd = np.where(tmpMsk)[0]
 
-        # For each swarm that is being changed
+        # For each particle that is being changed
         for i in changeInd:
             # If iterations are over a certain amount a full new swarm is calculated
             if(itt < 1000):
@@ -153,7 +153,7 @@ class Swarm:
                 self.pos[i], mask = self.Rand_shift(self.pos[i], cutSize, thresh)
                 self.vel[i][mask] = np.zeros((self.vel.shape[1], self.vel.shape[2]))[mask]
 
-        # Changes all shifted particles to have a velocity of zero
+        # Changes all shifted nodes to have a velocity of zero
         self.vel[tmpMsk] = np.zeros(self.vel.shape)[tmpMsk]
         # Resets local optima counter for changed swarms
         self.locOpCount[tmpMsk] = -1

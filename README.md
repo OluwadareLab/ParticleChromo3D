@@ -64,8 +64,8 @@ usage: **python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOL
 
 * optional arguments: <br />	
 	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-pc PARTICLECOUNT, --particleCount PARTICLECOUNT <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of particles in system [Default 10] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Maximum number of iterations before stop [Default 30000] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
