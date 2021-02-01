@@ -25,7 +25,9 @@
 
 **1.	Content of folders:**
 -----------------------------------------------------------	
-src: Python Source Code and utility's used
+* src: Python Source Code and utility's used. <br />
+* input-and-models: Synthetic and Real Hi-C datasets used. <br />
+* Results: Output Structions generated for all the experiments performed.<br />
 
 **2.	Hi-C Data used in this study:**
 -----------------------------------------------------------
@@ -53,13 +55,12 @@ Dependencies:<br />
 
 **5.	Usage:**
 -----------------------------------------------------------
-usage: python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />
+usage: **python3 Ps.py infile [-h] [-sc SWARMCOUNT] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />**
 			
-positional arguments: <br />
-&nbsp;&nbsp;&nbsp;&nbsp;infile  <br />
-	&nbsp;&nbsp;&nbsp;&nbsp;Input filed in the format of a matrix of contacts <br />
+* positional arguments: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;infile: Input file in the format of a matrix of contacts <br />
 
-optional arguments: <br />	
+* optional arguments: <br />	
 	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-sc SWARMCOUNT, --swarmCount SWARMCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of swarms in system [Default 10] <br />
@@ -71,7 +72,7 @@ optional arguments: <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 
 	
-**5.	Output:**
+**6.	Output:**
 -----------------------------------------------------------
 A pdb file and  log file.
 
