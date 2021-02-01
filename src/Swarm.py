@@ -63,15 +63,15 @@ class Swarm:
 
 
         self.pos = np.asarray(tempList) # Turns the list into a 3D matrix for vector operations
-        self.posBest = copy.copy(self.pos) # Best position of each individual swarm
-        self.costBest = np.full((self.pos.shape[0],1), np.inf) # Best cost of each individual swarm
+        self.posBest = copy.copy(self.pos) # Best position of each individual particle
+        self.costBest = np.full((self.pos.shape[0],1), np.inf) # Best cost of each individual particle
 
-        self.vel = np.zeros((self.pos.shape)) # Velocity of each particle in each swarm
-        self.cost = np.full((self.pos.shape[0],1), np.inf) # Cost of each swarm
+        self.vel = np.zeros((self.pos.shape)) # Velocity of each particle 
+        self.cost = np.full((self.pos.shape[0],1), np.inf) # Cost of each particle
 
-        self.dist = np.zeros((self.pos.shape[0],self.ref.shape[0])) # Distance of each swarm
+        self.dist = np.zeros((self.pos.shape[0],self.ref.shape[0])) # Distance of each particle
 
-        self.locOpCount = np.zeros((self.pos.shape[0],1)) # Used to check if a swarm is not changing after a certain amount of itterations
+        self.locOpCount = np.zeros((self.pos.shape[0],1)) # Used to check if a particle is not changing after a certain amount of itterations
 
         self.Cost() # Gets first cost calculations
 
@@ -138,7 +138,7 @@ class Swarm:
 
         # Gets a boolean array of values that checks if a certain number of particles has changed in the last iteration
         # This certain number is calculated in Calc_Const and is based on the number of iterations
-        # The boolean array that is calculated is then used to shift any swarms that have been calculated to not been changing
+        # The boolean array that is calculated is then used to shift any particle that have been calculated to not been changing
         tmpMsk = self.locOpCount > self.Calc_Const(10000,itt,5,15)
         tmpMsk = tmpMsk.reshape(self.locOpCount.shape[0])
         changeInd = np.where(tmpMsk)[0]
@@ -155,13 +155,13 @@ class Swarm:
 
         # Changes all shifted nodes to have a velocity of zero
         self.vel[tmpMsk] = np.zeros(self.vel.shape)[tmpMsk]
-        # Resets local optima counter for changed swarms
+        # Resets local optima counter for changed particle
         self.locOpCount[tmpMsk] = -1
 
         # Adjusts new positions with velocitys
         self.pos[~tmpMsk] = self.pos[~tmpMsk]+self.vel[~tmpMsk]
 
-    # Calculates the euclidean distance for each swarm
+    # Calculates the euclidean distance for each particle
     def Calc_Dist(self):
         for i in range(self.pos.shape[0]):
             if self.zeroInd is None:
