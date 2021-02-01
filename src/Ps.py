@@ -156,7 +156,7 @@ parser = argparse.ArgumentParser("ParticleChromo3D")
 parser.add_argument("infile", help="Matrix of contacts", type=str)
 parser.add_argument("-sc","--swarmCount", help="Number of swarms in system [Default 10]", type=int, default=10)
 parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 30000]", type=int, default=30000)
-parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.1]", type=float, default=0.000001)
+parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.000001]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
 parser.add_argument("-o","--outfile", help="File to output pdb model [Default ./]", type=str, default="./chr.pdb")
 
