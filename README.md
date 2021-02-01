@@ -35,8 +35,6 @@ In our study, we used the synthetic dataset from [Adhikari, et al](https://doi.o
 
 The GM12878 cell Hi-C dataset, GEO Accession number GSE63525, was downloaded from [GSDB](http://sysbio.rnet.missouri.edu/3dgenome/GSDB/details.php?id=GM12878) with GSDB ID: OO7429SF
 
-We used a toysyntheic dataset for supplemental results.  This data was downloaded from [Toy Data](http://sgt.cnag.cat/3dg/datasets/)
-
 **3.	Input matrix file format:**
 -----------------------------------------------------------
 
