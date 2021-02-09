@@ -25,17 +25,17 @@ class Swarm:
     id = 0
 
     # ref: distance matrix from HiC data
-    # swarmCount: Number of beads
+    # pointCount: Number of beads
     # randVal: random value to calculate initial x,y,z from
     # swarmSize: number of particles in cluster
     # zeroInd: Used to delete in distance calculation
     # swarmComb: used to combine multiple swarms if doing multiple passes
-    def __init__(self, ref, swarmCount, randVal=0.5, swarmSize = 10, zeroInd=None, swarmComb = None):
+    def __init__(self, ref, pointCount, randVal=0.5, swarmSize = 15, zeroInd=None, swarmComb = None):
 
         Swarm.id += 1
         self.id = Swarm.id # ID of swarm if using multiprocessing with multiple swarm clusters
 
-        self.pc = swarmCount # swarmCount
+        self.pc = pointCount # pointCount
 
         # Random Values to get initial xyz coordinates from
         self.randMax = randVal
@@ -46,7 +46,7 @@ class Swarm:
         self.ref = ref # Reference distance matrix
         self.zeroInd = zeroInd
 
-        # Creates a list of particles where each particle is a list of xyz coordinates of size swarmCount
+        # Creates a list of particles where each particle is a list of xyz coordinates of size pointCount
         tempList = []
         if swarmComb is None:
             for i in range(swarmSize):
@@ -75,7 +75,7 @@ class Swarm:
 
         self.Cost() # Gets first cost calculations
 
-    # Gets a array of xyz coordinates of size swarmCount,3 between a minimum and maximum value
+    # Gets a array of xyz coordinates of size pointCount,3 between a minimum and maximum value
     def Rand_Cur(self):
         return np.random.uniform(self.randMin,self.randMax, size=(self.pc, 3))
 

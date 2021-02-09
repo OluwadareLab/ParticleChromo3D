@@ -154,7 +154,7 @@ rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific da
 # python3 ParticleChromo3D.py <input_data> <other_parameter>
 parser = argparse.ArgumentParser("ParticleChromo3D")
 parser.add_argument("infile", help="Matrix of contacts", type=str)
-parser.add_argument("-ss","--swarmSize", help="Number of particles in system [Default 10]", type=int, default=10)
+parser.add_argument("-ss","--swarmSize", help="Number of particles in system [Default 15]", type=int, default=15)
 parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 30000]", type=int, default=30000)
 parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.000001]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
