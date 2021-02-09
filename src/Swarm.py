@@ -25,17 +25,17 @@ class Swarm:
     id = 0
 
     # ref: distance matrix from HiC data
-    # pointCount: Number of beads
+    # swarmCount: Number of beads
     # randVal: random value to calculate initial x,y,z from
-    # particleCount: number of particles in cluster
+    # swarmSize: number of particles in cluster
     # zeroInd: Used to delete in distance calculation
     # swarmComb: used to combine multiple swarms if doing multiple passes
-    def __init__(self, ref, pointCount, randVal=0.5, particleCount = 10, zeroInd=None, swarmComb = None):
+    def __init__(self, ref, swarmCount, randVal=0.5, swarmSize = 10, zeroInd=None, swarmComb = None):
 
         Swarm.id += 1
         self.id = Swarm.id # ID of swarm if using multiprocessing with multiple swarm clusters
 
-        self.pc = pointCount # Pointcount
+        self.pc = swarmCount # swarmCount
 
         # Random Values to get initial xyz coordinates from
         self.randMax = randVal
@@ -46,16 +46,16 @@ class Swarm:
         self.ref = ref # Reference distance matrix
         self.zeroInd = zeroInd
 
-        # Creates a list of particles where each particle is a list of xyz coordinates of size pointcount
+        # Creates a list of particles where each particle is a list of xyz coordinates of size swarmCount
         tempList = []
         if swarmComb is None:
-            for i in range(particleCount):
+            for i in range(swarmSize):
                 tempList.append(self.Rand_Cur())
         else:
             for swarm in swarmComb:
                 tempList.append(swarm.gBest[0])
 
-            for i in range(particleCount-len(swarmComb)):
+            for i in range(swarmSize-len(swarmComb)):
                 cutSize = np.random.randint(1, (int)(self.pc/2))
                 randCopy = np.random.choice(swarmComb).gBest[0]
                 tempPos, mask = self.Rand_shift(randCopy, cutSize, 0.1)
@@ -75,7 +75,7 @@ class Swarm:
 
         self.Cost() # Gets first cost calculations
 
-    # Gets a array of xyz coordinates of size pointcount,3 between a minimum and maximum value
+    # Gets a array of xyz coordinates of size swarmCount,3 between a minimum and maximum value
     def Rand_Cur(self):
         return np.random.uniform(self.randMin,self.randMax, size=(self.pc, 3))
 

@@ -18,8 +18,8 @@ from Helper import Write_Log
 
 def lossFunction(tar,b):
     #newCost = np.sqrt( (1/b) * np.sum( (tar)**2, axis=1 ) )
-    newCost = np.sum( (b-tar)**2)#SSE
-    #newCost = np.sqrt(np.sum( (self.dist-tar)**2, axis=1 ))#RMSE
+    #newCost = np.sum( (b-tar)**2)#SSE
+    newCost = np.sqrt(np.sum( (b-tar)**2))#RMSE
     
     #Heuber
     #delta = 1.0
@@ -30,12 +30,12 @@ def lossFunction(tar,b):
     return newCost
 
 # Prints statistics of the current swarm
-def Print_Stats(swarm, contact, pointCount, i, outFilePtr, convFact):
+def Print_Stats(swarm, contact, swarmCount, i, outFilePtr, convFact):
     pers = stats.pearsonr(swarm.gBest[2], contact[:,3])
     spear = stats.spearmanr(swarm.gBest[2], contact[:,3])
     spearIF = stats.spearmanr(swarm.gBest[2], contact[:,2])
 
-    error = np.sqrt( (1/pointCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
+    error = np.sqrt( (1/swarmCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
 
     print('id: ' + str(swarm.id) + 
         ' itt: ' + str(i) + 
@@ -51,16 +51,16 @@ def Write_Stats(swarm, contact, outFilePtr):
     Helper.Write_Output(outFilePtr, swarm.gBest[0])
 
 # Performs one operation and prints statistics of current swarm
-def One_Move(ittCount, swarm, contact, pointCount, threshold,  outFilePtr, convFact):
+def One_Move(ittCount, swarm, contact, swarmCount, threshold,  outFilePtr, convFact):
     saveGBestCost = float('inf')
     totTime = 0
 
 
     for i in range(ittCount):
         if (i%1000 == 0) and (swarm.gBest is not None):
-            #error = np.sqrt( (1/pointCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
+            #error = np.sqrt( (1/swarmCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
             error = lossFunction(contact[:,3],swarm.gBest[2])#np.sum( (swarm.gBest[2]-contact[:,3])**2 )
-            Print_Stats(swarm, contact, pointCount, i, outFilePtr, convFact)
+            Print_Stats(swarm, contact, swarmCount, i, outFilePtr, convFact)
             
                 
 
@@ -85,7 +85,7 @@ def Optimize(inFilePtr, outFilePtr, convFact,constraint,points,zeroInd):
     dist = 1.0 / (constraint[:,2]**convFact)
     constraint = np.insert(constraint,3, dist ,axis=1)
     
-    swarm = Swarm(constraint, len(points), randVal=randRange, particleCount=particleCount, zeroInd=zeroInd)
+    swarm = Swarm(constraint, len(points), randVal=randRange, swarmSize=swarmSize, zeroInd=zeroInd)
 
     ittFin = One_Move(ittCount, swarm, constraint, len(points), threshold,  outFilePtr, convFact)
     return (stats.pearsonr(swarm.gBest[2], constraint[:,3])[0], 
@@ -154,7 +154,7 @@ rangeSpace = [] # Max scaling factor. Needs to be optimized for each specific da
 # python3 ParticleChromo3D.py <input_data> <other_parameter>
 parser = argparse.ArgumentParser("ParticleChromo3D")
 parser.add_argument("infile", help="Matrix of contacts", type=str)
-parser.add_argument("-pc","--particleCount", help="Number of particles in system [Default 10]", type=int, default=10)
+parser.add_argument("-ss","--swarmSize", help="Number of particles in system [Default 10]", type=int, default=10)
 parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [Default 30000]", type=int, default=30000)
 parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.000001]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
@@ -170,8 +170,8 @@ if args.outfile:
     outFilePtr = args.outfile
 else: 
     outFilePtr = "noIn"
-if args.particleCount:
-    particleCount = args.particleCount
+if args.swarmSize:
+    swarmSize = args.swarmSize
 if args.ittCount:
     ittCount = args.ittCount
 if args.threshold:
@@ -207,6 +207,7 @@ theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlph
 if outFilePtr == "noIn":
     outFilePtr =  os.path.basename(os.path.basename(inFilePtr))
     outFilePtr = os.path.splitext(outFilePtr)[0]
+    print(outFilePtr)
 outputOfSwarm = Full_List( inFilePtr+".stripped", outFilePtr, theseAlphas)[0]
 print(outputOfSwarm)
 
