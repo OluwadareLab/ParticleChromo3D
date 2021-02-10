@@ -30,12 +30,12 @@ def lossFunction(tar,b):
     return newCost
 
 # Prints statistics of the current swarm
-def Print_Stats(swarm, contact, swarmCount, i, outFilePtr, convFact):
+def Print_Stats(swarm, contact, pointCount, i, outFilePtr, convFact):
     pers = stats.pearsonr(swarm.gBest[2], contact[:,3])
     spear = stats.spearmanr(swarm.gBest[2], contact[:,3])
     spearIF = stats.spearmanr(swarm.gBest[2], contact[:,2])
 
-    error = np.sqrt( (1/swarmCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
+    error = np.sqrt( (1/pointCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
 
     print('id: ' + str(swarm.id) + 
         ' itt: ' + str(i) + 
@@ -51,16 +51,16 @@ def Write_Stats(swarm, contact, outFilePtr):
     Helper.Write_Output(outFilePtr, swarm.gBest[0])
 
 # Performs one operation and prints statistics of current swarm
-def One_Move(ittCount, swarm, contact, swarmCount, threshold,  outFilePtr, convFact):
+def One_Move(ittCount, swarm, contact, pointCount, threshold,  outFilePtr, convFact):
     saveGBestCost = float('inf')
     totTime = 0
 
 
     for i in range(ittCount):
         if (i%1000 == 0) and (swarm.gBest is not None):
-            #error = np.sqrt( (1/swarmCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
+            #error = np.sqrt( (1/pointCount) * np.sum( (swarm.gBest[2]-contact[:,3])**2 ) )
             error = lossFunction(contact[:,3],swarm.gBest[2])#np.sum( (swarm.gBest[2]-contact[:,3])**2 )
-            Print_Stats(swarm, contact, swarmCount, i, outFilePtr, convFact)
+            Print_Stats(swarm, contact, pointCount, i, outFilePtr, convFact)
             
                 
 
@@ -201,7 +201,7 @@ with open(fout, "w") as f:
 f.close()
 
 
-theseAlphas = np.array([0.1, 2.0, 0.1])*100
+theseAlphas = np.array([0.1, 1.5, 0.2])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 
 if outFilePtr == "noIn":
