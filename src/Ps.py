@@ -201,7 +201,7 @@ with open(fout, "w") as f:
 f.close()
 
 
-theseAlphas = np.array([0.1, 1.5, 0.2])*100
+theseAlphas = np.array([0.1, 2.0, 0.2])*100
 theAlphas = np.array(range(int(theseAlphas[0]),int(theseAlphas[1]),int(theseAlphas[2])))/100
 
 if outFilePtr == "noIn":
