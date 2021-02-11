@@ -55,12 +55,12 @@ Dependencies:<br />
 
 **5.	Usage:**
 -----------------------------------------------------------
-usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] <br />**
+usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] ** <br />
 			
-* positional arguments: <br />
+* **positional arguments**: <br />
 &nbsp;&nbsp;&nbsp;&nbsp;infile: Input file in the format of a matrix of contacts <br />
 
-* optional arguments: <br />	
+* **optional arguments**: <br />	
 	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-ss SWARMSIZE, --swarmSize SWARMSIZE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of particles in system [Default 10] <br />
