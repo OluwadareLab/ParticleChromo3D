@@ -55,8 +55,8 @@ Dependencies:<br />
 
 **5.	Usage:**
 -----------------------------------------------------------
-usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] [-o OUTFILE]** <br />  
-			
+usage:**python3 Ps.py infile[-h] [-ss SWARMSIZE] [-itt ITTCOUNT][-t THRESHOLD][-rr RANDRANGE][-o OUTFILE]**  
+                           [-o OUTFILE]** <br /> 			
 * **positional arguments**: <br />
 &nbsp;&nbsp;&nbsp;&nbsp;infile: Input file in the format of a matrix of contacts <br />
 
