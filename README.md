@@ -55,7 +55,7 @@ Dependencies:<br />
 
 **5.	Usage:**
 -----------------------------------------------------------
-usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE]** <br />  
+usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] [-o OUTFILE]** <br />  
 			
 * **positional arguments**: <br />
 &nbsp;&nbsp;&nbsp;&nbsp;infile: Input file in the format of a matrix of contacts <br />
@@ -71,7 +71,7 @@ usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD
 	&nbsp;&nbsp;&nbsp;&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-o OUTFILE, --outfile OUTFILE <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filename of the output pdb model [Default ./chr.pdb]
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filename of the output pdb model  [Default ./chr.pdb]
  <br />
 	
 **6.	Output:**
