@@ -70,7 +70,9 @@ usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error threshold before stoping [Default 0.000001] <br />	
 	&nbsp;&nbsp;&nbsp;&nbsp;-rr RANDRANGE, --randRange RANDRANGE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
-
+	&nbsp;&nbsp;&nbsp;&nbsp;-o OUTFILE, --outfile OUTFILE <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filename of the output pdb model [Default ./chr.pdb]
+ <br />
 	
 **6.	Output:**
 -----------------------------------------------------------
