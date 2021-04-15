@@ -16,16 +16,23 @@ from itertools import repeat
 
 from Helper import Write_Log
 
-def lossFunction(tar,b):
-    #newCost = np.sqrt( (1/b) * np.sum( (tar)**2, axis=1 ) )
-    #newCost = np.sum( (b-tar)**2)#SSE
-    newCost = np.sqrt(np.sum( (b-tar)**2))#RMSE
-    
-    #Heuber
-    #delta = 1.0
-    #y = tar
-    #yHat = b
-    #newCost = np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)))
+def lossFunction(tar, b, lossFunc = 0):
+    if (lossFunc == 1) {
+        newCost = np.sqrt( (1/b) * np.sum( (tar)**2, axis=1 ) )
+    }
+    elif(lossFunc == 2){
+        newCost = np.sqrt(np.sum( (self.dist-tar)**2, axis=1 ))#RMSE
+    }
+    elif(lossFunc == 3){
+        #Heuber
+        delta = 1.0
+        y = tar
+        yHat = b
+        newCost = np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)))
+    }
+    else {
+        newCost = np.sum( (b-tar)**2)#SSE
+    }
     
     return newCost
 

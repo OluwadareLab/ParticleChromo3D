@@ -30,7 +30,8 @@ class Swarm:
     # swarmSize: number of particles in cluster
     # zeroInd: Used to delete in distance calculation
     # swarmComb: used to combine multiple swarms if doing multiple passes
-    def __init__(self, ref, pointCount, randVal=0.5, swarmSize = 15, zeroInd=None, swarmComb = None):
+    # lossFunctionChoice: chosenLossFunc
+    def __init__(self, ref, pointCount, randVal = 0.5, swarmSize = 15, zeroInd=None, swarmComb = None , lossFunc = 0):
 
         Swarm.id += 1
         self.id = Swarm.id # ID of swarm if using multiprocessing with multiple swarm clusters
@@ -40,6 +41,7 @@ class Swarm:
         # Random Values to get initial xyz coordinates from
         self.randMax = randVal
         self.randMin = -randVal
+        self.lossFunc = lossFunc
 
         self.gBest = None # Global best position
 
@@ -60,7 +62,6 @@ class Swarm:
                 randCopy = np.random.choice(swarmComb).gBest[0]
                 tempPos, mask = self.Rand_shift(randCopy, cutSize, 0.1)
                 tempList.append(tempPos)
-
 
         self.pos = np.asarray(tempList) # Turns the list into a 3D matrix for vector operations
         self.posBest = copy.copy(self.pos) # Best position of each individual particle
@@ -174,19 +175,25 @@ class Swarm:
         return self.dist
     
     # Calculates the cost of each swarm
-    # Sum Squared Error
     def Cost(self):
         self.Calc_Dist()
-
-        #newCost = np.sqrt( (1/self.pc) * np.sum( (self.dist-ref[:,3])**2, axis=1 ) )
-        newCost = np.sum( (self.dist-self.ref[:,3])**2, axis=1 )#SSE
-        #newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))#RMSE
-        #delta = 1.0
-        #y = self.ref[:,3]
-        #yHat = self.dist
-        #newCost = np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)),axis=1)
-        #print("ME:" ,newCost)
-        #print("notME",dnewCost)
+        #print("which lf?" )
+        #print(self.lossFunc)
+        if (self.lossFunc == 1): 
+            newCost = np.sqrt( (1/self.pc) * np.sum( (self.dist-ref[:,3])**2, axis=1 ) )#MSE
+        elif(self.lossFunc == 2): 
+            #print("loss func : RMSE" )
+            newCost = newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))#RMSE
+        elif(self.lossFunc == 3): 
+            #Heuber
+            delta = 1.0
+            y = self.ref[:,3]
+            yHat = self.dist
+            newCost = np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)),axis=1)
+            #print("ME:" ,newCost)
+            #print("notME",dnewCost)
+        else :
+            newCost = np.sum( (self.dist-self.ref[:,3])**2, axis=1 )#SSE
         
         newCost = newCost.reshape((self.pos.shape[0],1))
 
