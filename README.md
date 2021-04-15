@@ -64,6 +64,8 @@ usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD
 	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-ss SWARMSIZE, --swarmSize SWARMSIZE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of particles in system [Default 15] <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-lf LOSSFUNCTION, --lossFunction LOSSFUNCTION <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber[Default 0] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Maximum number of iterations before stop [Default 30000] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />

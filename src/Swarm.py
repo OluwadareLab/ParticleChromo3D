@@ -180,7 +180,7 @@ class Swarm:
         #print("which lf?" )
         #print(self.lossFunc)
         if (self.lossFunc == 1): 
-            newCost = np.sqrt( (1/self.pc) * np.sum( (self.dist-ref[:,3])**2, axis=1 ) )#MSE
+            newCost =  (1/self.pc) * np.sum( (self.dist-self.ref[:,3])**2, axis=1 ) /len(self.ref[:,3])#MSE
         elif(self.lossFunc == 2): 
             #print("loss func : RMSE" )
             newCost = newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))#RMSE
