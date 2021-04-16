@@ -55,7 +55,7 @@ Dependencies:<br />
 
 **5.	Usage:**
 ----------------------------------------------------------- 
-usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE]** <br /> 	
+usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD] [-rr RANDRANGE] [-lf LOSSFUNCTION]** <br /> 	
                            		
 * **positional arguments**: <br />
 &nbsp;&nbsp;&nbsp;&nbsp;infile: Input file in the format of a matrix of contacts <br />
@@ -64,8 +64,6 @@ usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD
 	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-ss SWARMSIZE, --swarmSize SWARMSIZE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of particles in system [Default 15] <br />
-	&nbsp;&nbsp;&nbsp;&nbsp;-lf LOSSFUNCTION, --lossFunction LOSSFUNCTION <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber[Default 0] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-itt ITTCOUNT, --ittCount ITTCOUNT <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Maximum number of iterations before stop [Default 30000] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-t THRESHOLD, --threshold THRESHOLD <br />
@@ -74,6 +72,8 @@ usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1] <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-o OUTFILE, --outfile OUTFILE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filename of the output pdb model  [Default ./chr.pdb]
+	&nbsp;&nbsp;&nbsp;&nbsp;-lf LOSSFUNCTION, --lossFunction LOSSFUNCTION <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber[Default 0] <br />
  <br />
 	
 **6.	Output:**
