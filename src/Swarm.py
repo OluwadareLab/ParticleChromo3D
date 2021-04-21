@@ -186,7 +186,7 @@ class Swarm:
             newCost = newCost = np.sqrt(np.sum( (self.dist-self.ref[:,3])**2, axis=1 ))#RMSE
         elif(self.lossFunc == 3): 
             #Heuber
-            delta = 0.9
+            delta = 0.5
             y = self.ref[:,3]
             yHat = self.dist
             newCost = np.sum(np.where(np.abs(y-yHat) < delta,.5*(y-yHat)**2 , delta*(np.abs(y-yHat)-0.5*delta)),axis=1)
