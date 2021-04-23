@@ -73,7 +73,7 @@ usage: **python3 Ps.py infile [-h] [-ss SWARMSIZE] [-itt ITTCOUNT] [-t THRESHOLD
 	&nbsp;&nbsp;&nbsp;&nbsp;-o OUTFILE, --outfile OUTFILE <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filename of the output pdb model  [Default ./chr.pdb]<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-lf LOSSFUNCTION, --lossFunction LOSSFUNCTION <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber [Default 0] <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber [Default 2] <br />
  <br />
 	
 **6.	Output:**
