@@ -161,7 +161,7 @@ parser.add_argument("-itt","--ittCount", help="Maximum itterations before stop [
 parser.add_argument("-t","--threshold", help="Error threshold before stoping [Default 0.000001]", type=float, default=0.000001)
 parser.add_argument("-rr","--randRange", help="Range of x,y,z starting coords. Random value bewtween -randRange,randRange [Default 1]", type=float, default=1.0)
 parser.add_argument("-o","--outfile", help="Filename of the output pdb model  [Default ./chr.pdb]", type=str, default="./chr.pdb")
-parser.add_argument("-lf","--lossFunction", help="0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber - if Huber set desired cut parameter [Default 2]", type=int, default=2)
+parser.add_argument("-lf","--lossFunction", help="0 = SSE, 1 = MSE, 2 = RMSE, 3 = Huber - if Huber set desired cut parameter [Default 0]", type=int, default=0)
 
 
 
