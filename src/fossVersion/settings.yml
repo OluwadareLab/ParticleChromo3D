@@ -1,0 +1,42 @@
+#factor used to convert IF into distance = 1 / (IF^factor)
+#comment out this parameter will make the program to scan for the best factor in [0.1, 2.0]
+dist_conv:
+    - alpha_low: 0.1
+      alpha_high: 0.5
+      alpha_step_size: 0.5
+
+
+# * c1 and c2 are the cognitive and social parameters respectively. 
+#   They control the particle’s behavior given two choices: (1) to follow its personal best or 
+#   (2) follow the swarm’s global best position. Overall, this dictates if the swarm is explorative 
+#   or exploitative in nature. 
+# * w controls the inertia of the swarm’s movement.
+# * swarm size controls number of particles
+# * max iterations sets maximum iterations
+swarm:
+    - swarm_size: 30
+      c1: 1.5
+      c2: 1.5
+      w: 0.9
+      max_iterations: 5000
+      init_learning_rate: 0.5
+
+
+# choose your topology 
+# goes to global if one of the following not chosen : pyramid, random, star, local
+# * k : int 
+#   number of neighbors to be considered. Must be a positive integer less than n_particles
+# * p : int {1,2}
+#   the Minkowski p-norm to use. 1 is the sum-of-absolute values (or L1 distance) 
+#   while 2 is the Euclidean (or L2) distance.
+    
+optimization:
+    - model: globe 
+    - extra_params:
+        k: 3
+        p: 2
+    
+# Performance
+performanceOptions:
+    - numberOfThreads: 14
+    - verbose: 1
