@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d 
 
 #File io
-#from Bio.PDB import *
+from Bio.PDB import *
 from loadFile import *
 from makePDB import *
 
@@ -29,6 +29,8 @@ import numpy.random as random
 
 from importlib import reload
 from multiprocessing import Pool
+
+import yaml
 
 #import pyswarmsDV 
 
@@ -52,7 +54,7 @@ dataset=lstCons[:,2]
 lstCons[:,2] = (dataset - np.min(dataset)) / (np.max(dataset) - np.min(dataset))+0.0001
 
 ### config
-import yaml
+
 config = yaml.safe_load(open("settings.yml"))
 swarm_size = int(config['swarm'][0]['swarm_size'])
 
