@@ -14,12 +14,12 @@ dist_conv:
 # * swarm size controls number of particles
 # * max iterations sets maximum iterations
 swarm:
-    - swarm_size: 30
-      c1: 1.5
-      c2: 1.5
-      w: 0.9
-      max_iterations: 5000
-      init_learning_rate: 0.5
+    - swarm_size: 15
+      c1: 2.5
+      c2: 2.5
+      w: 0.5
+      max_iterations: 30000
+      init_learning_rate: 0.7
 
 
 # choose your topology 
@@ -31,7 +31,7 @@ swarm:
 #   while 2 is the Euclidean (or L2) distance.
     
 optimization:
-    - model: globe 
+    - model: random 
     - extra_params:
         k: 3
         p: 2
