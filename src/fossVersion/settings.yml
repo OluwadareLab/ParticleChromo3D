@@ -31,7 +31,7 @@ swarm:
 #   while 2 is the Euclidean (or L2) distance.
     
 optimization:
-    - model: random 
+    - model: star 
     - extra_params:
         k: 3
         p: 2
