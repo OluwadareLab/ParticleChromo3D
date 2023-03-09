@@ -84,6 +84,6 @@ A pdb file and  log file.
 -----------------------------------------------------------
 Vadnais, D., Middleton, M. & Oluwadare, O. ParticleChromo3D: a Particle Swarm Optimization algorithm for chromosome 3D structure prediction from Hi-C data. BioData Mining 15, 19 (2022). https://doi.org/10.1186/s13040-022-00305-x
 
-**7.	Follow-on:**
+**8.	Follow-on:**
 -----------------------------------------------------------
 https://github.com/OluwadareLab/ParticleChromo3D_Plus
