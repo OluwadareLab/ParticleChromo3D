@@ -23,6 +23,45 @@
     
 --------------------------------------------------------------------	
 
+**0.	Follow-on:**
+-----------------------------------------------------------
+This code has continued development in the follow on [ParticleChromo3D+](https://github.com/OluwadareLab/ParticleChromo3D_Plus).  As part of that process we released a containerized web gui with restful endpoints that can be accessed [here](http://ParticleChromo3D.online).Additionally, we released a PyPi project which we will describe below.
+
+**ParticleChromo3D from PyPi**
+
+*NOTE: This usage is underconstruction.*<br>
+We released a [pypi package.](https://pypi.org/project/ParticleChromo3D/)
+
+Simply run : `pip install ParticleChromo3D`
+
+Then :
+```python
+from ParticleChromo3D import Ps
+import numpy as np
+
+fout = Ps.strip_file("exampleIfs/chr22_matrix.txt")
+
+# this will all get moved into a self contained function soon
+theseAlphas = np.array([0.1, 2.0, 0.1]) * 100
+theAlphas = ( np.array(range(int(theseAlphas[0]), int(theseAlphas[1]), int(theseAlphas[2]))) / 100)
+
+outputOfSwarm = Ps.Full_List(fout, "this_pdb", theseAlphas)[0]
+
+bestSpearm = outputOfSwarm[1]
+bestCost = outputOfSwarm[2]
+bestAlpha = theAlphas[outputOfSwarm[4]]
+bestPearsonRHO = outputOfSwarm[0]
+
+print(f"Convert factor:: {bestAlpha}")
+print(f"SSE at best spearman : {bestCost}")
+print(f"Best Spearman correlation Dist vs. Reconstructed Dist  : {bestSpearm}")
+print(f"Best Pearson correlation Dist vs. Reconstructed Dist: {bestPearsonRHO}")
+
+Ps.Write_Log(
+    "this_run.log", fout, bestAlpha, bestCost, bestSpearm, bestPearsonRHO
+)
+```
+
 **1.	Content of folders:**
 -----------------------------------------------------------	
 * src: Python Source Code and utility's used. <br />
@@ -83,7 +122,3 @@ A pdb file and  log file.
 **7.	Publication:**
 -----------------------------------------------------------
 Vadnais, D., Middleton, M. & Oluwadare, O. ParticleChromo3D: a Particle Swarm Optimization algorithm for chromosome 3D structure prediction from Hi-C data. BioData Mining 15, 19 (2022). https://doi.org/10.1186/s13040-022-00305-x
-
-**8.	Follow-on:**
------------------------------------------------------------
-https://github.com/OluwadareLab/ParticleChromo3D_Plus
