@@ -25,7 +25,7 @@
 
 **0.	Follow-on:**
 -----------------------------------------------------------
-This code has continued development in the follow on [ParticleChromo3D+](https://github.com/OluwadareLab/ParticleChromo3D_Plus).  As part of that process we released a containerized web gui with restful endpoints that can be accessed [here](http://ParticleChromo3D.online).Additionally, we released a PyPi project which we will describe below.
+This code has continued development in the follow on [ParticleChromo3D+](https://github.com/OluwadareLab/ParticleChromo3D_Plus).  As part of that process we released a containerized web gui with restful endpoints that can be accessed [here](http://ParticleChromo3D.online). Additionally, we released a PyPi project which we will describe below.
 
 **ParticleChromo3D from PyPi**
 
