@@ -62,6 +62,8 @@ Ps.Write_Log(
 )
 ```
 
+Additional usage documentation can be found in ParticleChromo3D+. [Click here to view](https://github.com/OluwadareLab/ParticleChromo3D_Plus/tree/main/help)
+
 **1.	Content of folders:**
 -----------------------------------------------------------	
 * src: Python Source Code and utility's used. <br />
